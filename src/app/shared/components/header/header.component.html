@@ -1,1 +1,32 @@
-<p>header works!</p>
+<nav class="bg-light" [class.bg-dark]="darkMode">
+    <div class="d-flex align-items-center justify-content-between fs-4 p-2">
+        <div>
+            <span class="text-danger">C</span>
+            <span class="text-success">o</span>
+            <span class="text-warning">l</span>
+            <span class="text-danger">l</span>
+            <span class="text-success">e</span>
+            <span class="text-warning">c</span>
+            <span class="text-danger">t</span>
+            <span class="text-success">i</span>
+            <span class="text-warning">o</span>
+            <span class="text-danger">n</span>
+        </div>
+        <div class="w-50">
+            <input type="text" class="w-100 rounded-pill border-0 search form-control search-input"
+                placeholder="search">
+        </div>
+        <div class="">
+            <select class="form-select" aria-label="Default select example">
+                <option value="uz">Uz</option>
+                <option value="en">En</option>
+            </select>
+        </div>
+        <div class="">
+            <button *ngIf="!userId" class="btn btn-outline-danger mx-2">sign up</button>
+            <button class="btn" [class.bg-white]="darkMode">
+                <img src="../../../../assets/person.svg" width="25" height="25" alt="" class="">
+            </button>
+        </div>
+    </div>
+</nav>
