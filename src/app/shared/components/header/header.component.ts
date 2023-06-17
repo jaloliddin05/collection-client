@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,12 @@ export class HeaderComponent implements OnInit {
   userId: any;
   darkMode: any;
 
-  constructor() {}
+  constructor(private readonly cookieService: CookieService) {}
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('userId');
+    this.userId = this.cookieService.get('userId');
     this.darkMode = localStorage.getItem('darkMode');
   }
+
+  changeMode() {}
 }
