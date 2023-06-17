@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HomeComponent } from './modules/home/home.component';
-import { CollectionComponent } from './modules/collection/collection.component';
-import { ItemComponent } from './modules/item/item.component';
+import { CollectionComponent } from './modules/collection/collection-single/collection.component';
+import { ItemComponent } from './modules/item/item-single/item.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 
 const routes: Routes = [
