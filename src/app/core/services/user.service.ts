@@ -6,21 +6,31 @@ import { API_URL } from '../constants';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private readonly httpClient:HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) {}
 
-  getAll(){
-    return this.httpClient.get(API_URL.USER, {withCredentials:true})
+  getAll() {
+    return this.httpClient.get(API_URL.USER, { withCredentials: true });
   }
 
-  getById(id:string){
-    return this.httpClient.get(`${API_URL.USER}/${id}`,{withCredentials:true})
+  getById(id: string) {
+    return this.httpClient.get(`${API_URL.USER}/${id}`, {
+      withCredentials: true,
+    });
   }
 
-  deleteOne(id:string){
-    return this.httpClient.delete(`${API_URL.USER}/${id}`,{withCredentials:true})
+  getMe() {
+    return this.httpClient.get(`${API_URL.USER}/me`, { withCredentials: true });
   }
 
-  update(id:string, data:any){
-    return this.httpClient.put(`${API_URL.USER}/${id}`,data,{withCredentials:true})
+  deleteOne(id: string) {
+    return this.httpClient.delete(`${API_URL.USER}/${id}`, {
+      withCredentials: true,
+    });
+  }
+
+  update(id: string, data: any) {
+    return this.httpClient.put(`${API_URL.USER}/${id}`, data, {
+      withCredentials: true,
+    });
   }
 }

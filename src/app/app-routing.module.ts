@@ -6,11 +6,13 @@ import { HomeComponent } from './modules/home/home.component';
 import { CollectionComponent } from './modules/collection/collection-single/collection.component';
 import { ItemComponent } from './modules/item/item-single/item.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'profile/my', component: UserProfileComponent },
   { path: 'collection', component: CollectionComponent },
   { path: 'item', component: ItemComponent },
   { path: 'header', component: HeaderComponent },

@@ -6,5 +6,6 @@ import { CollectionListComponent } from './collection-list/collection-list.compo
 @NgModule({
   declarations: [CollectionComponent, CollectionListComponent],
   imports: [CommonModule],
+  exports: [CollectionComponent, CollectionListComponent],
 })
 export class CollectionModule {}

@@ -4,12 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './modules/home/home.module';
 import { CollectionModule } from './modules/collection/collection.module';
 import { ItemModule } from './modules/item/item.module';
+import { UserModule } from './modules/user/user.module';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +23,8 @@ import { ItemModule } from './modules/item/item.module';
     HomeModule,
     CollectionModule,
     ItemModule,
+    UserModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
