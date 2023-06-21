@@ -9,8 +9,6 @@ import { HomeModule } from './modules/home/home.module';
 import { CollectionModule } from './modules/collection/collection.module';
 import { ItemModule } from './modules/item/item.module';
 import { UserModule } from './modules/user/user.module';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({

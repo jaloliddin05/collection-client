@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe({
       next: (res: any) => {
         this.cookieService.set('userId', res.userId);
-        this.router.navigate(['home']);
+        this.router.navigate(['home/collection']);
       },
       error: (err) => {
         this.error = err.error;

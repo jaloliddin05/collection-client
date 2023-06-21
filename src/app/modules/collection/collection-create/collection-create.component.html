@@ -1,0 +1,29 @@
+<div class="container bg-info p-3 rounded-4">
+    <div class="d-flex align-items-center justify-content-between w-100">
+        <h2>Create Collection</h2>
+        <button class="btn border-0 fs-3" (click)="closeModal()">⤬</button>
+    </div>
+    <form [formGroup]="collectionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group p-3">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+            <div *ngIf="collectionForm.controls['title'].invalid && (collectionForm.controls['title'].dirty || collectionForm.controls['title'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="collectionForm.controls['title'].errors?.['required']">
+                    Title is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group p-3">
+            <label for="avatar">Avatar</label>
+            <input type="file" class="form-control-file" id="avatar" (change)="onFileChange($event)" accept="image/*">
+            <div *ngIf="collectionForm.controls['avatar'].invalid && (collectionForm.controls['avatar'].dirty || collectionForm.controls['avatar'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="collectionForm.controls['avatar'].errors?.['required']">
+                    Avatar is required.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="collectionForm.invalid">Create</button>
+    </form>
+</div>

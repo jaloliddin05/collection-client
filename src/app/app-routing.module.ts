@@ -7,14 +7,31 @@ import { CollectionComponent } from './modules/collection/collection-single/coll
 import { ItemComponent } from './modules/item/item-single/item.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
+import { CollectionListComponent } from './modules/collection/collection-list/collection-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignUpComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'profile/my', component: UserProfileComponent },
-  { path: 'collection', component: CollectionComponent },
-  { path: 'item', component: ItemComponent },
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      { path: 'collection', component: CollectionListComponent },
+      { path: 'collection/:id', component: CollectionComponent },
+      { path: 'collection/:cId/item/:id', component: ItemComponent },
+    ],
+  },
+  {
+    path: 'profile/:userId',
+    component: UserProfileComponent,
+    children: [
+      { path: 'collection', component: CollectionListComponent },
+      { path: 'collection/:id', component: CollectionComponent },
+      { path: 'collection/:cId/item/:id', component: ItemComponent },
+    ],
+  },
+  { path: 'collection/:id', component: CollectionComponent },
+  { path: 'item/:id', component: ItemComponent },
   { path: 'header', component: HeaderComponent },
   { path: '**', redirectTo: 'home' },
 ];

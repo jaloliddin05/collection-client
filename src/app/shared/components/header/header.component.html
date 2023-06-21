@@ -1,6 +1,6 @@
 <nav class="bg-light" [class.bg-dark]="darkMode">
     <div class="d-flex align-items-center justify-content-between fs-4 p-2">
-        <div>
+        <div class="cursor-pointer" [routerLink]="['/home/collection']">
             <span class="text-danger">C</span>
             <span class="text-success">o</span>
             <span class="text-warning">l</span>
@@ -24,7 +24,7 @@
         </div>
         <div class="">
             <button *ngIf="!userId" class="btn btn-outline-danger mx-2">sign up</button>
-            <button class="btn" [class.bg-white]="darkMode" [routerLink]="['/profile/my']">
+            <button class="btn" [class.bg-white]="darkMode" [routerLink]="['/profile',userId,'collection']">
                 <img src="../../../../assets/person.svg" width="25" height="25" alt="" class="">
             </button>
         </div>

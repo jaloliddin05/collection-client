@@ -7,20 +7,25 @@ import { UserService } from '../../../core/services/user.service';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-  user:any
-  collections:any
+  user: any;
+  collections: any;
+  isCreateCollectionOpen: boolean = false;
 
   constructor(private readonly userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getMe().subscribe({
       next: (res: any) => {
-        this.user = res
-        this.collections = res.collections
+        this.user = res;
+        this.collections = res.collections;
       },
       error: (err) => {
         console.log(err.error);
       },
     });
+  }
+
+  openCreateCollectionModal() {
+    this.isCreateCollectionOpen = !this.isCreateCollectionOpen;
   }
 }
