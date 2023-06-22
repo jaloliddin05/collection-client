@@ -40,7 +40,6 @@ export class CollectionListComponent implements OnInit {
       this.collectionService.getAll().subscribe({
         next: (res: any) => {
           this.collections = res.items;
-          console.log(this.collections);
         },
         error: (err: any) => {
           console.log(err.error);

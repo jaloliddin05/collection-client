@@ -1,1 +1,41 @@
-<p>item-create works!</p>
+<div class="container bg-warning p-3 rounded-4">
+    <div class="d-flex align-items-center justify-content-between w-100">
+        <h2>Create Item</h2>
+        <button class="btn border-0 fs-3" (click)="closeModal()">⤬</button>
+    </div>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <div class="form-group p-3">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+        </div>
+        <div class="form-group p-3">
+            <ul class="list-unstyled">
+                <li *ngFor="let tag of tags" class="">
+                    <span>{{tag?.title}}</span>
+                    <button class="btn btn-danger">⤬</button>
+                </li>
+                <button class="btn btn-primary" (click)="changeCreateTagVisible(true)">Add tag</button>
+            </ul>
+            <div *ngIf="isTagCreateOpen" class="d-flex align-items-center position-relative">
+                <input type="text" class="form-control" formControlName="tagInput" (input)="changeSearchTag()">
+                <button class="btn btn-primary" (click)="createTag()">Add</button>
+                <ul class="tag-search-res position-absolute top-0 start-0">
+                    <li *ngFor="let tag of searchedTags" class="">
+                        {{tag.title}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group p-3">
+            <label for="avatar">Avatar</label>
+            <input type="file" class="form-control-file" id="avatar" (change)="onFileChange($event)" accept="image/*">
+            <div *ngIf="itemForm.controls['avatar'].invalid && (itemForm.controls['avatar'].dirty || itemForm.controls['avatar'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="itemForm.controls['avatar'].errors?.['required']">
+                    Avatar is required.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">Create</button>
+    </form>
+</div>

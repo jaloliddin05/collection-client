@@ -11,17 +11,22 @@ import { CollectionService } from '../../../core/services/collection.service';
 export class CollectionComponent implements OnInit {
   collection: any;
   items: any[] = [];
+  collectionId: any;
+  userId: any;
 
   constructor(
-    private readonly param: ActivatedRoute,
+    private readonly route: ActivatedRoute,
     private readonly collectionService: CollectionService,
     private readonly location: Location
   ) {}
 
   ngOnInit(): void {
-    this.param.params.subscribe((params) => {
-      const id = params['id'];
-      this.collectionService.getById(id).subscribe({
+    const parentRoute = this.route.parent;
+    this.userId = parentRoute?.snapshot.paramMap.get('userId');
+
+    this.route.params.subscribe((params) => {
+      this.collectionId = params['id'];
+      this.collectionService.getById(this.collectionId).subscribe({
         next: (res: any) => {
           this.collection = res;
           this.items = res.items;

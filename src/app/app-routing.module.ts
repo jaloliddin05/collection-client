@@ -8,6 +8,7 @@ import { ItemComponent } from './modules/item/item-single/item.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
 import { CollectionListComponent } from './modules/collection/collection-list/collection-list.component';
+import { ItemCreateComponent } from './modules/item/item-create/item-create.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,8 +31,7 @@ const routes: Routes = [
       { path: 'collection/:cId/item/:id', component: ItemComponent },
     ],
   },
-  { path: 'collection/:id', component: CollectionComponent },
-  { path: 'item/:id', component: ItemComponent },
+  { path: 'item-create', component: ItemCreateComponent },
   { path: 'header', component: HeaderComponent },
   { path: '**', redirectTo: 'home' },
 ];
