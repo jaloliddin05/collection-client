@@ -48,6 +48,18 @@ export class CollectionListComponent implements OnInit {
     }
   }
 
+  deleteCollection(id: string) {
+    this.collectionService.deleteOne(id).subscribe({
+      next: (res: any) => {
+        const index = this.collections.findIndex((c: any) => c.id == id);
+        this.collections.splice(index, 1);
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
+  }
+
   openCreateCollectionModal() {
     this.isCreateCollectionOpen = !this.isCreateCollectionOpen;
   }

@@ -9,6 +9,9 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
 import { CollectionListComponent } from './modules/collection/collection-list/collection-list.component';
 import { ItemCreateComponent } from './modules/item/item-create/item-create.component';
+import { TagSearchInputComponent } from './modules/tag/tag-search-input/tag-search-input.component';
+import { UserListComponent } from './modules/user/user-list/user-list.component';
+import { UserSingleComponent } from './modules/user/user-single/user-single.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,8 +34,17 @@ const routes: Routes = [
       { path: 'collection/:cId/item/:id', component: ItemComponent },
     ],
   },
-  { path: 'item-create', component: ItemCreateComponent },
-  { path: 'header', component: HeaderComponent },
+  {
+    path: 'admin',
+    component: UserProfileComponent,
+    children: [
+      { path: 'users', component: UserListComponent },
+      { path: 'users/:id', component: UserSingleComponent },
+      { path: 'users/:id/collection/:cId', component: CollectionComponent },
+      { path: 'users/:id/collection/:cId/item/iId', component: ItemComponent },
+    ],
+  },
+  { path: 'users', component: UserListComponent },
   { path: '**', redirectTo: 'home' },
 ];
 

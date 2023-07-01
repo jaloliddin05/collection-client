@@ -10,19 +10,23 @@ import { CollectionModule } from './modules/collection/collection.module';
 import { ItemModule } from './modules/item/item.module';
 import { UserModule } from './modules/user/user.module';
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { TagModule } from './modules/tag/tag.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    AdminModule,
     AppRoutingModule,
-    HttpClientModule,
     AuthModule,
-    HomeModule,
+    BrowserModule,
     CollectionModule,
+    HomeModule,
+    HttpClientModule,
     ItemModule,
-    UserModule,
     SharedModule,
+    TagModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

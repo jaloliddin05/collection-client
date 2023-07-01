@@ -19,7 +19,6 @@ export class ItemCreateComponent implements OnInit {
   @Output() setNewCollection = new EventEmitter();
   //....
   tags: any[] = [];
-  searchedTags: any[] = [];
   isTagCreateOpen: boolean = false;
   //....
 
@@ -31,7 +30,6 @@ export class ItemCreateComponent implements OnInit {
     this.itemForm = this.formBuilder.group({
       title: ['', Validators.required],
       avatar: [null, Validators.required],
-      tagInput: [''],
     });
   }
 
@@ -57,44 +55,29 @@ export class ItemCreateComponent implements OnInit {
     }
   }
 
-  createTag() {
-    if (this.itemForm.value.tagInput.trim() !== '') {
-      this.tagService.create(this.itemForm.value.tagInput.trim()).subscribe({
-        next: (res: any) => {
-          this.tags.push(res);
-        },
-        error: (err: any) => {},
-      });
+  createTag(tag: any) {
+    const isExist = this.tags.find((t: any) => t.id == tag.id);
+    if (!isExist) {
+      this.tags.push(tag);
     }
     this.isTagCreateOpen = false;
-    this.itemForm.value.tagInput = '';
-  }
-
-  changeSearchTag() {
-    if (this.itemForm.value.tagInput.trim() !== '') {
-      this.tagService
-        .getByTitle(this.itemForm.value.tagInput.trim())
-        .subscribe({
-          next: (res: any) => {
-            this.searchedTags = res;
-          },
-          error: (err: any) => {},
-        });
-    } else {
-      this.searchedTags = [];
-    }
   }
 
   deleteTag(id: string) {
-    this.tagService.delete(id).subscribe({
-      next: (res: any) => {
-        const index = this.tags.findIndex((t: any) => t.id == id);
-        this.tags.splice(index, 1);
-      },
-      error: (err: any) => {
-        console.log(err.error);
-      },
-    });
+    const index = this.tags.findIndex((t: any) => t.id == id);
+    const tag = this.tags.find((t: any) => t.id == id);
+    if (tag?.isNew) {
+      this.tagService.delete(id).subscribe({
+        next: (res: any) => {
+          this.tags.splice(index, 1);
+        },
+        error: (err: any) => {
+          console.log(err.error);
+        },
+      });
+    } else {
+      this.tags.splice(index, 1);
+    }
   }
 
   onFileChange(event: any) {

@@ -16,7 +16,17 @@
                 </div>
                 <div class="card-footer">
                     <button [routerLink]="[currentPath,item?.id]" class="btn btn-primary">View
-                        Details</button>
+                        Details
+                    </button>
+                    <div *ngIf="isCreateCollectionVisible"
+                        class="mt-2 w-100 d-flex align-items-center justify-content-between">
+                        <button class="btn btn-warning w-50">
+                            Update
+                        </button>
+                        <button class="btn btn-danger w-50 mx-1" (click)="deleteCollection(item?.id)">
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

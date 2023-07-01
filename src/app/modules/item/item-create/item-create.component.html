@@ -9,22 +9,15 @@
             <input type="text" class="form-control" id="title" formControlName="title">
         </div>
         <div class="form-group p-3">
-            <ul class="list-unstyled">
-                <li *ngFor="let tag of tags" class="">
-                    <span>{{tag?.title}}</span>
-                    <button class="btn btn-danger">⤬</button>
+            <ul class="list-unstyled d-flex align-items-center flex-wrap">
+                <li *ngFor="let tag of tags"
+                    class="bg-success rounded-3 text-warning d-flex align-items-center justify-content-between">
+                    <span class="p-1">{{tag?.title}}</span>
+                    <span class="btn btn-danger mx-1" (click)="deleteTag(tag.id)">⤬</span>
                 </li>
                 <button class="btn btn-primary" (click)="changeCreateTagVisible(true)">Add tag</button>
             </ul>
-            <div *ngIf="isTagCreateOpen" class="d-flex align-items-center position-relative">
-                <input type="text" class="form-control" formControlName="tagInput" (input)="changeSearchTag()">
-                <button class="btn btn-primary" (click)="createTag()">Add</button>
-                <ul class="tag-search-res position-absolute top-0 start-0">
-                    <li *ngFor="let tag of searchedTags" class="">
-                        {{tag.title}}
-                    </li>
-                </ul>
-            </div>
+            <app-tag-search-input *ngIf="isTagCreateOpen" (tagResponse)="createTag($event)"></app-tag-search-input>
         </div>
         <div class="form-group p-3">
             <label for="avatar">Avatar</label>

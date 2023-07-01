@@ -1,0 +1,13 @@
+<div class="w-100 search-box position-relative d-flex align-items-center justify-content-between">
+    <input type="text" class="form-control search-input w-75" [(ngModel)]="search" (input)="getResults()"
+        (blur)="onInputBlur()" (keyup)="handleKey($event)">
+    <button class="btn btn-primary w-25" (click)="addTag()">Add</button>
+    <ul class="search-result list-unstyled w-75" *ngIf="showDropdown && results.length > 0">
+        <li class="p-1" *ngFor="let result of results;let i = index " [class.bg-light]="i == filterIndex"
+            (click)="clickDropDown(i)">
+            <button class="border-0 bg-transparent" (click)="search = result.name">
+                {{ result.title }}
+            </button>
+        </li>
+    </ul>
+</div>

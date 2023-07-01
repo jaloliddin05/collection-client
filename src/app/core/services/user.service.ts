@@ -33,4 +33,10 @@ export class UserService {
       withCredentials: true,
     });
   }
+
+  changeRole(id: string, role:number) {
+    return this.httpClient.patch(`${API_URL.USER}/role/${id}`, {role}, {
+      withCredentials: true,
+    });
+  }
 }

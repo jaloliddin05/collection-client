@@ -7,6 +7,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { ItemCreateComponent } from './item-create/item-create.component';
 import { ItemUpdateComponent } from './item-update/item-update.component';
 import { RouterModule } from '@angular/router';
+import { TagModule } from '../tag/tag.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { RouterModule } from '@angular/router';
     ItemCreateComponent,
     ItemUpdateComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule,TagModule],
   exports:[
     ItemComponent,
     ItemListComponent,

@@ -1,1 +1,30 @@
-<p>user-list works!</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col truncate h5 text-danger">ID</div>
+        <div class="col truncate h5">Img</div>
+        <div class="col truncate h5">Name</div>
+        <div class="col truncate h5">Email</div>
+        <div class="col truncate h5">Role</div>
+        <div class="col truncate h5">Action</div>
+        <div class="col truncate h5">Action</div>
+    </div>
+    <div *ngFor="let user of users;let i = index" class="row mt-3 d-flex align-items-center">
+        <div class="col truncate">{{ i + 1 }}</div>
+        <div class="col truncate d-flex align-items-center">
+            <img [src]="user?.avatar?.url" width="50" height="50" class="rounded-circle" alt="">
+        </div>
+        <div class="col truncate">{{ user.name }}</div>
+        <div class="col truncate">{{ user.email }}</div>
+        <div class="col truncate" [class.text-success]="user.role == 2" [class.text-danger]="user?.role == 1">{{
+            user?.role == 1 ?
+            "User":"Admin" }}</div>
+        <div class="col truncate">
+            <button class="btn btn-primary w-75" [class.bg-danger]="user?.role == 2" [class.bg-success]="user.role == 1"
+                (click)="changeRole(user.id,user.role)">{{user?.role == 1 ?
+                "do admin":"do user"}}</button>
+        </div>
+        <div class="col truncate">
+            <button class="btn btn-danger w-50">Delete</button>
+        </div>
+    </div>
+</div>
