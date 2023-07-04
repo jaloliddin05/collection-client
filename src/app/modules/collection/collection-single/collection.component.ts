@@ -23,6 +23,11 @@ export class CollectionComponent implements OnInit {
   ngOnInit(): void {
     const parentRoute = this.route.parent;
     this.userId = parentRoute?.snapshot.paramMap.get('userId');
+    if (!this.userId) {
+      this.route.params.subscribe((p) => {
+        this.userId = p['userId'];
+      });
+    }
 
     this.route.params.subscribe((params) => {
       this.collectionId = params['id'];

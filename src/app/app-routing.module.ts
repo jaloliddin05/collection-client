@@ -12,6 +12,7 @@ import { ItemCreateComponent } from './modules/item/item-create/item-create.comp
 import { TagSearchInputComponent } from './modules/tag/tag-search-input/tag-search-input.component';
 import { UserListComponent } from './modules/user/user-list/user-list.component';
 import { UserSingleComponent } from './modules/user/user-single/user-single.component';
+import { AdminComponent } from './modules/admin/admin/admin.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -36,12 +37,15 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: UserProfileComponent,
+    component: AdminComponent,
     children: [
       { path: 'users', component: UserListComponent },
-      { path: 'users/:id', component: UserSingleComponent },
-      { path: 'users/:id/collection/:cId', component: CollectionComponent },
-      { path: 'users/:id/collection/:cId/item/iId', component: ItemComponent },
+      { path: 'users/:id/collection', component: UserSingleComponent },
+      { path: 'users/:userId/collection/:id', component: CollectionComponent },
+      {
+        path: 'users/:userId/collection/:cId/item/id',
+        component: ItemComponent,
+      },
     ],
   },
   { path: 'users', component: UserListComponent },

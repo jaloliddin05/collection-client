@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div *ngIf="user.role == 2" class="w-100 d-flex align-items-center justify-content-end">
-    <button [routerLink]="['/admin']" class="btn btn-info cursor">Admin</button>
+<div *ngIf="user?.role == 2" class="w-100 d-flex align-items-center justify-content-end">
+    <button [routerLink]="['/admin/users']" class="btn btn-info cursor">Admin</button>
 </div>
 <div class="">
     <router-outlet></router-outlet>

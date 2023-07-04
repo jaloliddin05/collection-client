@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
 import { CollectionService } from '../../../core/services/collection.service';
@@ -12,8 +12,10 @@ export class CollectionListComponent implements OnInit {
   collections: any[] = [];
   currentPath: any;
   userId: any;
+  collectionId: any;
   isCreateCollectionOpen: boolean = false;
   isCreateCollectionVisible: boolean = false;
+  isUpdateCollectionOpen: boolean = false;
 
   constructor(
     private readonly userService: UserService,
@@ -25,6 +27,11 @@ export class CollectionListComponent implements OnInit {
     this.currentPath = this.route.snapshot.url;
     const parentRoute = this.route.parent;
     this.userId = parentRoute?.snapshot.paramMap.get('userId');
+    if (!this.userId) {
+      this.route.params.subscribe((param) => {
+        this.userId = param['id'];
+      });
+    }
 
     if (this.userId) {
       this.isCreateCollectionVisible = true;
@@ -60,6 +67,11 @@ export class CollectionListComponent implements OnInit {
     });
   }
 
+  clickUpdateBtn(id: string) {
+    this.collectionId = id;
+    this.isUpdateCollectionOpen = !this.isUpdateCollectionOpen;
+  }
+
   openCreateCollectionModal() {
     this.isCreateCollectionOpen = !this.isCreateCollectionOpen;
   }
@@ -68,7 +80,18 @@ export class CollectionListComponent implements OnInit {
     this.isCreateCollectionOpen = bool;
   }
 
+  closeUpdateModalList(bool: boolean) {
+    this.isUpdateCollectionOpen = bool;
+  }
+
   setNewCollection(collection: any) {
     this.collections.push(collection);
+  }
+  updateCollection(collection: any) {
+    let oldCollection = this.collections.find(
+      (c: any) => c.id == this.collectionId
+    );
+    oldCollection.title = collection?.title;
+    oldCollection.avatar = collection?.avatar;
   }
 }

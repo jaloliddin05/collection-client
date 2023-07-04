@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -9,7 +10,10 @@ import { UserService } from '../../../core/services/user.service';
 export class UserListComponent implements OnInit {
   users: any[] = [];
 
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly router: Router
+  ) {}
   ngOnInit(): void {
     this.userService.getAll().subscribe({
       next: (res: any) => {
@@ -44,5 +48,12 @@ export class UserListComponent implements OnInit {
         console.log(err.error);
       },
     });
+  }
+
+  clickUser(id: string, $event: any) {
+    if ($event.target.className.includes('not-click')) {
+      return;
+    }
+    this.router.navigate(['admin', 'users', id, 'collection']);
   }
 }

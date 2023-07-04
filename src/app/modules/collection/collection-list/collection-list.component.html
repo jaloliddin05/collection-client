@@ -1,8 +1,12 @@
 <div class="container">
     <app-collection-create class="create-collection" [class.visible]="isCreateCollectionOpen"
         [class.invisible]="!isCreateCollectionOpen" [userId]="userId"
-        (closeCreateListModal)="closeCreateModalList($event)"
-        (setNewCollection)="setNewCollection($event)"></app-collection-create>
+        (closeCreateListModal)="closeCreateModalList($event)" (setNewCollection)="setNewCollection($event)">
+    </app-collection-create>
+    <app-collection-update class="create-collection" [class.visible]="isUpdateCollectionOpen"
+        [class.invisible]="!isUpdateCollectionOpen" [collectionId]="collectionId"
+        (closeUpdateListModal)="closeUpdateModalList($event)" (setNewCollection)="updateCollection($event)">
+    </app-collection-update>
     <div class="row">
         <div class="w-100">
             <button (click)="openCreateCollectionModal()" [class.visible]="isCreateCollectionVisible"
@@ -20,7 +24,7 @@
                     </button>
                     <div *ngIf="isCreateCollectionVisible"
                         class="mt-2 w-100 d-flex align-items-center justify-content-between">
-                        <button class="btn btn-warning w-50">
+                        <button class="btn btn-warning w-50" (click)="clickUpdateBtn(item?.id)">
                             Update
                         </button>
                         <button class="btn btn-danger w-50 mx-1" (click)="deleteCollection(item?.id)">
