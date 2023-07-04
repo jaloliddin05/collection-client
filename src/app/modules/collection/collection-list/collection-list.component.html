@@ -19,9 +19,17 @@
                     <h5 class="card-title">{{ item.title }}</h5>
                 </div>
                 <div class="card-footer">
-                    <button [routerLink]="[currentPath,item?.id]" class="btn btn-primary">View
-                        Details
-                    </button>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button [routerLink]="[currentPath,item?.id]" class="btn btn-primary">View
+                            Details
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button [disabled]="!userAccountId" class="btn border-0"
+                                (click)="changeLike(!item?.isLiked,item.id)">{{item?.isLiked ?'❤️':'🖤' }}</button>
+                            <span [class.text-dark]="!item?.isLiked"
+                                [class.text-danger]="item?.isLiked">{{item?.likesCount}}</span>
+                        </div>
+                    </div>
                     <div *ngIf="isCreateCollectionVisible"
                         class="mt-2 w-100 d-flex align-items-center justify-content-between">
                         <button class="btn btn-warning w-50" (click)="clickUpdateBtn(item?.id)">

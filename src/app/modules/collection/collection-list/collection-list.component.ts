@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
 import { CollectionService } from '../../../core/services/collection.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-collection-list',
@@ -16,14 +17,17 @@ export class CollectionListComponent implements OnInit {
   isCreateCollectionOpen: boolean = false;
   isCreateCollectionVisible: boolean = false;
   isUpdateCollectionOpen: boolean = false;
+  userAccountId: any;
 
   constructor(
     private readonly userService: UserService,
     private readonly route: ActivatedRoute,
-    private readonly collectionService: CollectionService
+    private readonly collectionService: CollectionService,
+    private readonly cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
+    this.userAccountId = this.cookieService.get('userId');
     this.currentPath = this.route.snapshot.url;
     const parentRoute = this.route.parent;
     this.userId = parentRoute?.snapshot.paramMap.get('userId');
@@ -44,7 +48,7 @@ export class CollectionListComponent implements OnInit {
         },
       });
     } else {
-      this.collectionService.getAll().subscribe({
+      this.collectionService.getAll(this.userAccountId).subscribe({
         next: (res: any) => {
           this.collections = res.items;
         },
@@ -65,6 +69,40 @@ export class CollectionListComponent implements OnInit {
         console.log(err.error);
       },
     });
+  }
+
+  changeLike(bool: boolean, collectionId: string) {
+    if (bool) {
+      this.collectionService
+        .addLike(this.userAccountId, collectionId)
+        .subscribe({
+          next: (res: any) => {
+            const collection = this.collections.find(
+              (c: any) => c.id == collectionId
+            );
+            collection.isLiked = true;
+            collection.likesCount = res.likesCount;
+          },
+          error: (err: any) => {
+            console.log(err.error);
+          },
+        });
+    } else {
+      this.collectionService
+        .removeLike(this.userAccountId, collectionId)
+        .subscribe({
+          next: (res: any) => {
+            const collection = this.collections.find(
+              (c: any) => c.id == collectionId
+            );
+            collection.isLiked = false;
+            collection.likesCount = res.likesCount;
+          },
+          error: (err: any) => {
+            console.log(err.error);
+          },
+        });
+    }
   }
 
   clickUpdateBtn(id: string) {

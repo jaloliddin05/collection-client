@@ -49,7 +49,7 @@ const routes: Routes = [
     ],
   },
   { path: 'users', component: UserListComponent },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'home/collection' },
 ];
 
 @NgModule({

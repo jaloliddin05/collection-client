@@ -1,0 +1,24 @@
+<div class="container bg-warning p-3 rounded-4">
+    <div class="d-flex align-items-center justify-content-between w-100">
+        <h2>Create Item</h2>
+        <button class="btn border-0 fs-3" (click)="closeModal()">⤬</button>
+    </div>
+    <form [formGroup]="fieldForm" (ngSubmit)="onSubmit()">
+        <div class="form-group p-3">
+            <label for="title">Type</label>
+            <select class="form-control" id="title" formControlName="type">
+                <option *ngFor="let type of types" [value]="type">
+            </select>
+        </div>
+        <div class="form-group p-3">
+            <label for="title">Key</label>
+            <input type="text" class="form-control" id="title" formControlName="key">
+        </div>
+        <div class="form-group p-3">
+            <label for="title">Value</label>
+            <input type="text" class="form-control" id="title" formControlName="value">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="fieldForm.invalid">Create</button>
+    </form>
+</div>
