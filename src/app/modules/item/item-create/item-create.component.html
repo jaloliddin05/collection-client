@@ -20,11 +20,12 @@
             <app-tag-search-input *ngIf="isTagCreateOpen" (tagResponse)="createTag($event)"></app-tag-search-input>
         </div>
         <div class="form-group p-3">
-            <ul class="list-unstyled d-flex align-items-center flex-wrap">
-                <button class="btn btn-primary">Add field</button>
-            </ul>
+            <app-field-list [fields]="fields"></app-field-list>
+            <button class="btn btn-primary" (click)="changeFieldModal(true)">Add field</button>
+            <app-field-create [class.d-none]="!isCreateFieldVisible" (setCloseModal)="changeFieldModal($event)"
+                (setNewField)="setNewField($event)"></app-field-create>
         </div>
-        <div class="form-group p-3">
+        <div class=" form-group p-3">
             <label for="avatar">Avatar</label>
             <input type="file" class="form-control-file" id="avatar" (change)="onFileChange($event)" accept="image/*">
             <div *ngIf="itemForm.controls['avatar'].invalid && (itemForm.controls['avatar'].dirty || itemForm.controls['avatar'].touched)"

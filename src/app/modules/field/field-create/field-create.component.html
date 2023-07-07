@@ -1,22 +1,22 @@
 <div class="container bg-warning p-3 rounded-4">
-    <div class="d-flex align-items-center justify-content-between w-100">
-        <h2>Create Item</h2>
-        <button class="btn border-0 fs-3" (click)="closeModal()">⤬</button>
-    </div>
+    <button class="btn border-0 fs-3 " (click)="closeModal()">⤬</button>
     <form [formGroup]="fieldForm" (ngSubmit)="onSubmit()">
         <div class="form-group p-3">
-            <label for="title">Type</label>
-            <select class="form-control" id="title" formControlName="type">
-                <option *ngFor="let type of types" [value]="type">
+            <select class="form-control" formControlName="type">
+                <option *ngFor="let type of types" [value]="type">{{type}}</option>
             </select>
         </div>
         <div class="form-group p-3">
-            <label for="title">Key</label>
-            <input type="text" class="form-control" id="title" formControlName="key">
+            <input type="text" class="form-control" formControlName="key" placeholder="key">
         </div>
-        <div class="form-group p-3">
-            <label for="title">Value</label>
-            <input type="text" class="form-control" id="title" formControlName="value">
+        <div *ngIf="fieldForm.value.type !== 'checkbox'" class="form-group p-3">
+            <input type="text" class="form-control" formControlName="value" placeholder="value">
+        </div>
+        <div *ngIf="fieldForm.value.type == 'checkbox'" class="form-group p-3">
+            <select class="form-control" formControlName="value">
+                <option [value]="true">true</option>
+                <option [value]="false">false</option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="fieldForm.invalid">Create</button>

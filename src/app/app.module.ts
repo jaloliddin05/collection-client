@@ -12,6 +12,7 @@ import { UserModule } from './modules/user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { TagModule } from './modules/tag/tag.module';
+import { FieldModule } from './modules/field/field.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { TagModule } from './modules/tag/tag.module';
     AuthModule,
     BrowserModule,
     CollectionModule,
+    FieldModule,
     HomeModule,
     HttpClientModule,
     ItemModule,

@@ -8,8 +8,6 @@ import { UserService } from '../../../core/services/user.service';
 })
 export class UserProfileComponent implements OnInit {
   user: any;
-  collections: any;
-  isCreateCollectionOpen: boolean = false;
 
   constructor(private readonly userService: UserService) {}
 
@@ -17,15 +15,10 @@ export class UserProfileComponent implements OnInit {
     this.userService.getMe().subscribe({
       next: (res: any) => {
         this.user = res;
-        this.collections = res.collections;
       },
       error: (err) => {
         console.log(err.error);
       },
     });
-  }
-
-  openCreateCollectionModal() {
-    this.isCreateCollectionOpen = !this.isCreateCollectionOpen;
   }
 }

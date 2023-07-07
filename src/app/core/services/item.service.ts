@@ -33,4 +33,20 @@ export class ItemService {
   create(data: any) {
     return this.httpClient.post(API_URL.ITEM, data, { withCredentials: true });
   }
+
+  addLike(userId: string, itemId: string) {
+    return this.httpClient.patch(
+      `${API_URL.ITEM}/add-like`,
+      { userId, itemId },
+      { withCredentials: true }
+    );
+  }
+
+  removeLike(userId: string, itemId: string) {
+    return this.httpClient.patch(
+      `${API_URL.ITEM}/remove-like`,
+      { userId, itemId },
+      { withCredentials: true }
+    );
+  }
 }

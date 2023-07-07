@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FieldCreateComponent {
   fieldForm!: FormGroup;
   types: string[] = ['checkbox', 'text'];
+  @Output() setNewField = new EventEmitter();
+  @Output() setCloseModal = new EventEmitter();
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.fieldForm = this.formBuilder.group({
@@ -18,6 +20,14 @@ export class FieldCreateComponent {
     });
   }
 
-  onSubmit() {}
-  closeModal() {}
+  onSubmit() {
+    if (this.fieldForm.valid) {
+      this.setNewField.emit(this.fieldForm.value);
+    }
+    this.fieldForm.reset();
+    this.setCloseModal.emit(false);
+  }
+  closeModal() {
+    this.setCloseModal.emit(false);
+  }
 }

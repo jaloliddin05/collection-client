@@ -10,7 +10,6 @@ import { CollectionService } from '../../../core/services/collection.service';
 })
 export class CollectionComponent implements OnInit {
   collection: any;
-  items: any[] = [];
   collectionId: any;
   userId: any;
 
@@ -31,10 +30,9 @@ export class CollectionComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       this.collectionId = params['id'];
-      this.collectionService.getById(this.collectionId).subscribe({
+      this.collectionService.getById(this.collectionId, '').subscribe({
         next: (res: any) => {
           this.collection = res;
-          this.items = res.items;
         },
         error: (err) => {
           console.log(err.error);

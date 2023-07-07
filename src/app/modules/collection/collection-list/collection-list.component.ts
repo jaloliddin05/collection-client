@@ -23,7 +23,8 @@ export class CollectionListComponent implements OnInit {
     private readonly userService: UserService,
     private readonly route: ActivatedRoute,
     private readonly collectionService: CollectionService,
-    private readonly cookieService: CookieService
+    private readonly cookieService: CookieService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class CollectionListComponent implements OnInit {
           this.collections = res.collections;
         },
         error: (err: any) => {
+          this.router.navigate(['login']);
           console.log(err.error);
         },
       });

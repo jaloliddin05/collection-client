@@ -1,1 +1,12 @@
-<p>field-list works!</p>
+<ul class="list-unstyled">
+    <li *ngFor="let field of fields" class="">
+        <div *ngIf="field?.type == 'text'" class="d-flex align-items-center">
+            <p class="fw-bold">{{field.key}} : </p>
+            <p class="text-danger">{{field.value}}</p>
+        </div>
+        <div *ngIf="field?.type == 'checkbox'" class="d-flex align-items-center">
+            <p class=""> {{' ' + field.key}} : </p>
+            <input type="checkbox" [checked]="field.value">
+        </div>
+    </li>
+</ul>

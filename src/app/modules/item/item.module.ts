@@ -8,6 +8,7 @@ import { ItemCreateComponent } from './item-create/item-create.component';
 import { ItemUpdateComponent } from './item-update/item-update.component';
 import { RouterModule } from '@angular/router';
 import { TagModule } from '../tag/tag.module';
+import { FieldModule } from '../field/field.module';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,19 @@ import { TagModule } from '../tag/tag.module';
     ItemCreateComponent,
     ItemUpdateComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule,TagModule],
-  exports:[
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TagModule,
+    FieldModule,
+  ],
+  exports: [
     ItemComponent,
     ItemListComponent,
     ItemCreateComponent,
     ItemUpdateComponent,
-  ]
+  ],
 })
 export class ItemModule {}

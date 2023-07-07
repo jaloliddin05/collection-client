@@ -9,8 +9,9 @@
     </app-collection-update>
     <div class="row">
         <div class="w-100">
-            <button (click)="openCreateCollectionModal()" [class.visible]="isCreateCollectionVisible"
-                [class.invisible]="!isCreateCollectionVisible">Add collection</button>
+            <button (click)="openCreateCollectionModal()" class="btn btn-success"
+                [class.visible]="isCreateCollectionVisible" [class.invisible]="!isCreateCollectionVisible">Add
+                collection</button>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let item of collections">
             <div class="card mb-3">

@@ -14,8 +14,9 @@ export class CollectionService {
     });
   }
 
-  getById(id: string) {
+  getById(id: string, userId: string) {
     return this.httpClient.get(`${API_URL.COLLECTION}/${id}`, {
+      params: { userId },
       withCredentials: true,
     });
   }

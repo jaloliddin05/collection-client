@@ -16,11 +16,13 @@ export class ItemCreateComponent implements OnInit {
   itemForm: FormGroup;
   //....
   @Output() closeCreateListModal = new EventEmitter();
-  @Output() setNewCollection = new EventEmitter();
+  @Output() setNewItem = new EventEmitter();
   //....
   tags: any[] = [];
   isTagCreateOpen: boolean = false;
   //....
+  isCreateFieldVisible: boolean = false;
+  fields: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,17 +43,18 @@ export class ItemCreateComponent implements OnInit {
       formData.append('name', this.itemForm.value.title);
       formData.append('collection', this.collection);
       formData.append('avatar', this.itemForm.value.avatar);
-      console.log(this.itemForm.value);
+      formData.append('fields', JSON.stringify(this.fields));
+      formData.append('tags', JSON.stringify(this.tags.map((t: any) => t.id)));
 
-      // this.itemService.create(formData).subscribe({
-      //   next: (res: any) => {
-      //     this.setCollection(res);
-      //     this.closeModal();
-      //   },
-      //   error: (err: any) => {
-      //     console.log(err.error);
-      //   },
-      // });
+      this.itemService.create(formData).subscribe({
+        next: (res: any) => {
+          this.setItem(res);
+          this.closeModal();
+        },
+        error: (err: any) => {
+          console.log(err.error);
+        },
+      });
     }
   }
 
@@ -97,7 +100,14 @@ export class ItemCreateComponent implements OnInit {
     this.closeCreateListModal.emit(false);
   }
 
-  setCollection(collection: any) {
-    this.setNewCollection.emit(collection);
+  setItem(collection: any) {
+    this.setNewItem.emit(collection);
+  }
+
+  setNewField(field: any) {
+    this.fields.push(field);
+  }
+  changeFieldModal(bool: boolean) {
+    this.isCreateFieldVisible = bool;
   }
 }
