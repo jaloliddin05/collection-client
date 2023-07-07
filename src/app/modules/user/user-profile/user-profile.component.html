@@ -1,6 +1,25 @@
 <app-header></app-header>
-<div *ngIf="user?.role == 2" class="w-100 d-flex align-items-center justify-content-end">
-    <button [routerLink]="['/admin/users']" class="btn btn-info cursor">Admin</button>
+<div class="w-100 d-flex align-items-center justify-content-between">
+    <div class="">
+        <div *ngIf="user?.avatar?.url" class="">
+            <img [src]="user?.avatar?.url" width="60" height="60" alt="" class="user-avatar-img">
+            <span class="mx-2 fw-bold text-secondary">{{user?.name}}</span>
+            <div>
+                <label class="mx-1 cursor">
+                    update
+                    <input type="file" class="d-none" (change)="onFileChange($event)">
+                </label>
+            </div>
+        </div>
+        <div *ngIf="!user?.avatar?.url" class="">
+            <label>
+                <span class="btn avatar-upload-btn"></span>
+                <input type="file" class="d-none" (change)="onFileChange($event)">
+            </label>
+            <span class="mx-2 fw-bold text-secondary">{{user?.name}}</span>
+        </div>
+    </div>
+    <button *ngIf="user?.role == 2" [routerLink]="['/admin/users']" class="btn btn-info cursor">Admin</button>
 </div>
 <div class="">
     <router-outlet></router-outlet>

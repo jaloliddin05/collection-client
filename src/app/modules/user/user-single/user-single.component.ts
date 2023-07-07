@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { UserService } from '../../../core/services/user.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class UserSingleComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly location: Location
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
@@ -26,5 +28,9 @@ export class UserSingleComponent implements OnInit {
         },
       });
     });
+  }
+
+  back() {
+    this.location.back();
   }
 }

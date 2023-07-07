@@ -6,11 +6,10 @@
     (setNewItem)="setNewItem($event)">
 </app-item-create>
 <div class="container">
-    <ul class="w-100 list-unstyled row">
+    <ul class="w-100 list-unstyled row d-flex align-items-stretch">
         <li *ngFor="let item of items" class="col-lg-3 col-md-6 col-sm-12 ">
             <div class="card rounded-top-5">
-                <img [src]="item?.avatar?.url" class="rounded-top-5 card-img">
-                <span class=""></span>
+                <img [src]="item?.avatar?.url" height="200" class="rounded-top-5 card-img">
                 <div class="card-body">
                     <h3>{{item?.name}}</h3>
                 </div>
@@ -20,6 +19,8 @@
                     <span [class.text-dark]="!item?.isLiked"
                         [class.text-danger]="item?.isLiked">{{item?.likesCount}}</span>
                 </div>
+                <button class="btn text-start text-info fw-bold"
+                    [routerLink]="[currentPath,'item',item?.id]">Details</button>
                 <div class="card-footer">
                     <app-field-list [fields]="item?.fields"></app-field-list>
                     <ul class="d-flex align-items-center list-unstyled">

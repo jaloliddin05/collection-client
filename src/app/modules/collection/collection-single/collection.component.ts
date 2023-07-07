@@ -11,6 +11,8 @@ import { CollectionService } from '../../../core/services/collection.service';
 export class CollectionComponent implements OnInit {
   collection: any;
   collectionId: any;
+  likedUsers: any[] = [];
+  anotherLikedUsersCount: number = 0;
   userId: any;
 
   constructor(
@@ -33,6 +35,8 @@ export class CollectionComponent implements OnInit {
       this.collectionService.getById(this.collectionId, '').subscribe({
         next: (res: any) => {
           this.collection = res;
+          this.likedUsers = res.likedUsers.slice(0, 3);
+          this.anotherLikedUsersCount = res.likedUsers.length - 3;
         },
         error: (err) => {
           console.log(err.error);

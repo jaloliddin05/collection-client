@@ -15,13 +15,13 @@
                     <span class="p-1">{{tag?.title}}</span>
                     <span class="btn btn-danger mx-1" (click)="deleteTag(tag.id)">⤬</span>
                 </li>
-                <button class="btn btn-primary" (click)="changeCreateTagVisible(true)">Add tag</button>
+                <button type="button" class="btn btn-primary" (click)="changeCreateTagVisible(true)">Add tag</button>
             </ul>
             <app-tag-search-input *ngIf="isTagCreateOpen" (tagResponse)="createTag($event)"></app-tag-search-input>
         </div>
         <div class="form-group p-3">
             <app-field-list [fields]="fields"></app-field-list>
-            <button class="btn btn-primary" (click)="changeFieldModal(true)">Add field</button>
+            <button type="button" class="btn btn-primary" (click)="changeFieldModal(true)">Add field</button>
             <app-field-create [class.d-none]="!isCreateFieldVisible" (setCloseModal)="changeFieldModal($event)"
                 (setNewField)="setNewField($event)"></app-field-create>
         </div>

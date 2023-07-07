@@ -1,3 +1,12 @@
-<button (click)="back()">back</button>
-<p>{{collection?.title}}</p>
+<button (click)="back()" class="btn">←back</button>
+<div class="d-flex align-items-center">
+    <h1 class="">{{collection?.title}}</h1>
+    <ul class="list-unstyled d-flex align-items-center mx-3">
+        <li *ngIf="likedUsers.length > 0" class="fw-bold mx-2">liked by</li>
+        <li *ngFor="let user of likedUsers" class="user-avatar">
+            <img [src]="user?.avatar?.url" height="40" width="40" alt="" class="user-avatar-img">
+        </li>
+        <li *ngIf="anotherLikedUsersCount > 0" class="">+{{anotherLikedUsersCount}}</li>
+    </ul>
+</div>
 <app-item-list [userId]="userId" [collectionId]="collectionId"></app-item-list>

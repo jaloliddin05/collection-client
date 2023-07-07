@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { ItemService } from '../../../core/services/item.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class ItemComponent implements OnInit {
 
   constructor(
     private readonly param: ActivatedRoute,
-    private readonly itemService: ItemService
+    private readonly itemService: ItemService,
+    private readonly location: Location
   ) {}
 
   ngOnInit(): void {
@@ -27,5 +29,9 @@ export class ItemComponent implements OnInit {
         },
       });
     });
+  }
+
+  back() {
+    this.location.back();
   }
 }

@@ -38,6 +38,18 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  changeStatus(id: string, status: boolean) {
+    this.userService.changeStatus(id, status).subscribe({
+      next: (res: any) => {
+        const user = this.users.find((u: any) => u.id == id);
+        user.status = status;
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
+  }
+
   deleteUser(id: string) {
     this.userService.deleteOne(id).subscribe({
       next: (res: any) => {

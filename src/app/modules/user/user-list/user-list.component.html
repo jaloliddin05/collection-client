@@ -7,6 +7,7 @@
         <div class="col truncate h5">Role</div>
         <div class="col truncate h5">Action</div>
         <div class="col truncate h5">Action</div>
+        <div class="col truncate h5">Action</div>
     </div>
     <div *ngFor="let user of users;let i = index" class="row mt-3 d-flex align-items-center user-item"
         (click)="clickUser(user.id,$event)">
@@ -19,6 +20,11 @@
         <div class="col truncate" [class.text-success]="user.role == 2" [class.text-danger]="user?.role == 1">{{
             user?.role == 1 ?
             "User":"Admin" }}</div>
+        <div class="col truncate">
+            <button class="btn btn-primary w-75 not-click" [class.bg-danger]="user?.status"
+                [class.bg-success]="!user.status" (click)="changeStatus(user.id,!user.status)">{{user?.status ?
+                "Block":"UnBlock"}}</button>
+        </div>
         <div class="col truncate">
             <button class="btn btn-primary w-75 not-click" [class.bg-danger]="user?.role == 2"
                 [class.bg-success]="user.role == 1" (click)="changeRole(user.id,user.role)">{{user?.role == 1 ?

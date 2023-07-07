@@ -21,4 +21,19 @@ export class UserProfileComponent implements OnInit {
       },
     });
   }
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    const formData = new FormData();
+
+    formData.append('avatar', file);
+    this.userService.update(this.user?.id, formData).subscribe({
+      next: (res: any) => {
+        this.user = res;
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
+  }
 }

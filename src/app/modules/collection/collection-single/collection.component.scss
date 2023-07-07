@@ -1,0 +1,7 @@
+.user-avatar-img {
+  border-radius: 50%;
+  border: 3px solid red;
+}
+.user-avatar + .user-avatar {
+  margin-left: -20px;
+}

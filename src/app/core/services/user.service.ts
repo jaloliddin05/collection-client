@@ -34,9 +34,23 @@ export class UserService {
     });
   }
 
-  changeRole(id: string, role:number) {
-    return this.httpClient.patch(`${API_URL.USER}/role/${id}`, {role}, {
-      withCredentials: true,
-    });
+  changeRole(id: string, role: number) {
+    return this.httpClient.patch(
+      `${API_URL.USER}/role/${id}`,
+      { role },
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
+  changeStatus(id: string, status: boolean) {
+    return this.httpClient.patch(
+      `${API_URL.USER}/status/${id}`,
+      { status },
+      {
+        withCredentials: true,
+      }
+    );
   }
 }
