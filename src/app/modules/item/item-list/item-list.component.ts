@@ -33,7 +33,6 @@ export class ItemListComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           this.items = res.items;
-          console.log(this.items[0]?.tags);
         },
         error: (err: any) => {},
       });

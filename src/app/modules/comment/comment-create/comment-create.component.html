@@ -1,0 +1,8 @@
+<div class="position-relative">
+    <span class="user-comment-avatar">
+        <img [src]="user?.avatar?.url" alt="" class="rounded-circle" width="40" height="40">
+    </span>
+    <input type="text" class="form-control comment-input p-3 text-secondary" [(ngModel)]="text"
+        placeholder="Add a comment">
+    <button class="btn btn-secondary comment-add-btn" (click)="addComment()">Post</button>
+</div>

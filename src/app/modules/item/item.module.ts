@@ -9,6 +9,7 @@ import { ItemUpdateComponent } from './item-update/item-update.component';
 import { RouterModule } from '@angular/router';
 import { TagModule } from '../tag/tag.module';
 import { FieldModule } from '../field/field.module';
+import { CommentModule } from '../comment/comment.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FieldModule } from '../field/field.module';
     ReactiveFormsModule,
     TagModule,
     FieldModule,
+    CommentModule,
   ],
   exports: [
     ItemComponent,

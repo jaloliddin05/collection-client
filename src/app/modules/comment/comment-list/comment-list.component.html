@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <ul class="list-unstyled w-100">
+        <li *ngFor="let comment of comments" class="d-flex w-100">
+            <div class="">
+                <img [src]="comment?.user?.avatar?.url" width="30" height="30" class="user-avatar">
+            </div>
+            <div class="w-100 mx-3">
+                <div class="d-flex align-items-start">
+                    <h5>
+                        {{comment?.user?.name}}
+                    </h5>
+                    <span class="text-secondary mx-4 comment-date">{{comment?.date | commentTime}}</span>
+                </div>
+                <p class="text-secondary">{{comment?.text}}</p>
+                <span class="break-span"></span>
+            </div>
+        </li>
+    </ul>
+</div>

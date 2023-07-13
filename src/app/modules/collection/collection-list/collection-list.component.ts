@@ -50,7 +50,7 @@ export class CollectionListComponent implements OnInit {
         },
       });
     } else {
-      this.collectionService.getAll(this.userAccountId).subscribe({
+      this.collectionService.getAll(this.userAccountId || 'id').subscribe({
         next: (res: any) => {
           this.collections = res.items;
         },

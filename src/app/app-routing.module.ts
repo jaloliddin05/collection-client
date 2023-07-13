@@ -43,7 +43,7 @@ const routes: Routes = [
       { path: 'users/:id/collection', component: UserSingleComponent },
       { path: 'users/:userId/collection/:id', component: CollectionComponent },
       {
-        path: 'users/:userId/collection/:cId/item/id',
+        path: 'users/:userId/collection/:cId/item/:id',
         component: ItemComponent,
       },
     ],

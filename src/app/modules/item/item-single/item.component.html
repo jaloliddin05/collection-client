@@ -1,2 +1,37 @@
 <button (click)="back()" class="btn">←back</button>
-<p>{{item?.name}}</p>
+<div class="container">
+    <div class="d-flex align-items-stretch">
+        <div class="w-25">
+            <img [src]="item?.avatar?.url" alt="" class="w-100 card-img rounded rounded-2">
+        </div>
+        <div class="mx-3 h-100">
+            <h2 class="mb-3">{{item?.name}}</h2>
+            <app-field-list [fields]="item?.fields"></app-field-list>
+        </div>
+    </div>
+    <div class="mt-4">
+        <div class="d-flex align-items-center justify-content-between h-100">
+            <div class="text-secondary mt-2">
+                <p class="text-secondary fw-bold">Comments: ✉️{{comments.length}}</p>
+            </div>
+            <div class="d-flex align-items-center mx-4">
+                <p class="text-secondary fw-bold m-0">Likes:</p>
+                <button [disabled]="!userAccountId" class="btn border-0 fs-4"
+                    (click)="changeLike(!item?.isLiked)">{{item?.isLiked ?'❤️':'🖤' }}
+                </button>
+                <span [class.text-dark]="!item?.isLiked" [class.text-danger]="item?.isLiked"
+                    class="fs-4">{{item?.likesCount}}</span>
+                <ul class="list-unstyled d-flex align-items-center mx-3 mt-2">
+                    <li *ngFor="let user of likedUsers" class="user-avatar">
+                        <img [src]="user?.avatar?.url" height="40" width="40" alt="" class="user-avatar-img">
+                    </li>
+                    <li *ngIf="anotherLikedUsersCount > 0" class="">+{{anotherLikedUsersCount}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <app-comment-create *ngIf="user?.name" [item]="item" (setComment)="addNewComment($event)"></app-comment-create>
+        <app-comment-list [comments]="comments"></app-comment-list>
+    </div>
+</div>

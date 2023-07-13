@@ -1,0 +1,14 @@
+.filed-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.filed-checkbox-input:checked ~ .filed-checkbox {
+  background-image: url("../../../../assets/plus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}

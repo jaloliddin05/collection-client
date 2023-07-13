@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,7 +10,10 @@ import { UserService } from '../../../core/services/user.service';
 export class UserProfileComponent implements OnInit {
   user: any;
 
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.userService.getMe().subscribe({
@@ -17,7 +21,7 @@ export class UserProfileComponent implements OnInit {
         this.user = res;
       },
       error: (err) => {
-        console.log(err.error);
+        this.router.navigate(['login']);
       },
     });
   }

@@ -5,8 +5,11 @@
             <p class="text-danger">{{field.value}}</p>
         </div>
         <div *ngIf="field?.type == 'checkbox'" class="d-flex align-items-center">
-            <p class=""> {{' ' + field.key}} : </p>
-            <input type="checkbox" [checked]="field.value">
+            <p class="fw-bold text-warning"> {{' ' + field.key}} : </p>
+            <label class="mx-1 mb-1">
+                <input type="checkbox" [checked]="field.value" class="d-none filed-checkbox-input">
+                <span class="filed-checkbox"></span>
+            </label>
         </div>
     </li>
 </ul>

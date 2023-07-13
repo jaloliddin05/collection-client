@@ -5,5 +5,6 @@ const AUTH = `${API_URL}/auth`;
 const COLLECTION = `${API_URL}/collection`;
 const ITEM = `${API_URL}/item`;
 const TAG = `${API_URL}/tag`;
+const COMMENT = `${API_URL}/comment`;
 
-export default { USER, COLLECTION, ITEM, TAG, AUTH };
+export default { USER, COLLECTION, ITEM, TAG, AUTH,COMMENT };
