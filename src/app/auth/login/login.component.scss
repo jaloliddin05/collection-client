@@ -1,15 +1,15 @@
 .gradient-custom {
-  background: #6a11cb;
+  background: url("../../../assets/back.jpg");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: contain;
+}
+.form-login {
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: inset 0 0 500px 5px #111111a6;
+}
 
-  background: -webkit-linear-gradient(
-    to right,
-    rgba(106, 17, 203, 1),
-    rgba(37, 117, 252, 1)
-  );
-
-  background: linear-gradient(
-    to right,
-    rgba(106, 17, 203, 1),
-    rgba(37, 117, 252, 1)
-  );
+.cursor {
+  cursor: pointer;
 }

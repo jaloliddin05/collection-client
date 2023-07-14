@@ -49,4 +49,11 @@ export class ItemService {
       { withCredentials: true }
     );
   }
+
+  search(text: string) {
+    return this.httpClient.get(`${API_URL.ITEM}/search`, {
+      withCredentials: true,
+      params: { text },
+    });
+  }
 }

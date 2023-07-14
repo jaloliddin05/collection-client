@@ -1,0 +1,20 @@
+<div class="w-100 position-relative">
+    <button class="search-btn" (click)="clickDropDawn()">All <span>▼</span></button>
+    <input type="text" class="w-100 rounded-pill border-0  search-input" [(ngModel)]="search" (input)="getResults()"
+        (blur)="onInputBlur()" (keyup)="handleKey($event)" placeholder="search">
+    <button class="search-search">🔎</button>
+    <ul class="search-result list-unstyled " *ngIf="showDropdown && results.length > 0">
+        <li class="p-1 search-item" *ngFor="let result of results;let i = index " [class.bg-light]="i == filterIndex"
+            (click)="clickDropDown(i)">
+            <button type="button" class="border-0 bg-transparent search-itembtn" (click)="search = result.name">
+                ↝ {{ result.name }}
+            </button>
+        </li>
+    </ul>
+
+    <ul *ngIf="isDropDawnVisible" class="search-dropdawn list-unstyled">
+        <li *ngFor="let collection of collections" (click)="getItemsByCollection(collection.id)">{{collection.title}}
+        </li>
+    </ul>
+</div>
+<div *ngIf="isDropDawnVisible" class="backround" (click)="isDropDawnVisible = !isDropDawnVisible"></div>

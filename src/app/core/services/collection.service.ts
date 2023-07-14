@@ -21,6 +21,11 @@ export class CollectionService {
     });
   }
 
+  getAllForSearch() {
+    return this.httpClient.get(`${API_URL.COLLECTION}/all-for-search`, {
+      withCredentials: true,
+    });
+  }
   deleteOne(id: string) {
     return this.httpClient.delete(`${API_URL.COLLECTION}/${id}`, {
       withCredentials: true,

@@ -1,4 +1,4 @@
-<nav class="bg-light" [class.bg-dark]="darkMode">
+<nav class="header" [class.bg-dark]="darkMode">
     <div class="d-flex align-items-center justify-content-between fs-4 p-2">
         <div class="cursor-pointer" [routerLink]="['/home/collection']">
             <span class="text-danger">C</span>
@@ -13,8 +13,7 @@
             <span class="text-danger">n</span>
         </div>
         <div class="w-50">
-            <input type="text" class="w-100 rounded-pill border-0 search form-control search-input"
-                placeholder="search">
+            <app-search-input></app-search-input>
         </div>
         <div class="">
             <select class="form-select" aria-label="Default select example">

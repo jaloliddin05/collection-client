@@ -5,11 +5,8 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HomeComponent } from './modules/home/home.component';
 import { CollectionComponent } from './modules/collection/collection-single/collection.component';
 import { ItemComponent } from './modules/item/item-single/item.component';
-import { HeaderComponent } from './shared/components/header/header.component';
 import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
 import { CollectionListComponent } from './modules/collection/collection-list/collection-list.component';
-import { ItemCreateComponent } from './modules/item/item-create/item-create.component';
-import { TagSearchInputComponent } from './modules/tag/tag-search-input/tag-search-input.component';
 import { UserListComponent } from './modules/user/user-list/user-list.component';
 import { UserSingleComponent } from './modules/user/user-single/user-single.component';
 import { AdminComponent } from './modules/admin/admin/admin.component';
@@ -23,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: 'collection', component: CollectionListComponent },
       { path: 'collection/:id', component: CollectionComponent },
+      { path: 'item/:id', component: ItemComponent },
       { path: 'collection/:cId/item/:id', component: ItemComponent },
     ],
   },
