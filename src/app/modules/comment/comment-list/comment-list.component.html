@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div *ngIf="comments?.length" class="container mt-4 bg-white rounded-3 pt-2">
     <ul class="list-unstyled w-100">
         <li *ngFor="let comment of comments" class="d-flex w-100">
             <div class="">

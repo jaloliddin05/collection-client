@@ -4,3 +4,15 @@
   left: 40%;
   z-index: 5;
 }
+.collection {
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.details-btn {
+  color: #007185;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  &:hover {
+    color: #c75159;
+  }
+}

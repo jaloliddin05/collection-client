@@ -13,15 +13,18 @@
                 [class.visible]="isCreateCollectionVisible" [class.invisible]="!isCreateCollectionVisible">Add
                 collection</button>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let item of collections">
-            <div class="card mb-3">
-                <img [src]="item.avatar.url" class="card-img-top" width="80" height="150" alt="{{ item.title }}">
+        <div class="col-lg-3 col-md-6 col-sm-12 " *ngFor="let item of collections">
+            <div class="card mb-3 border-0 rounded-0 collection">
+                <div class="p-3 pb-0">
+                    <h5 class="">{{ item.title }}</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
+                    <img [src]="item.avatar.url" class="card-img-top rounded-0" width="80" height="190"
+                        alt="{{ item.title }}">
                 </div>
                 <div class="card-footer">
                     <div class="d-flex align-items-center justify-content-between">
-                        <button [routerLink]="[currentPath,item?.id]" class="btn btn-primary">View
+                        <button [routerLink]="[currentPath,item?.id]" class="btn details-btn px-0 border-0">View
                             Details
                         </button>
                         <div class="d-flex align-items-center">

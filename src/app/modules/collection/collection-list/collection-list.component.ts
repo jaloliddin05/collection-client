@@ -75,36 +75,42 @@ export class CollectionListComponent implements OnInit {
 
   changeLike(bool: boolean, collectionId: string) {
     if (bool) {
-      this.collectionService
-        .addLike(this.userAccountId, collectionId)
-        .subscribe({
-          next: (res: any) => {
-            const collection = this.collections.find(
-              (c: any) => c.id == collectionId
-            );
-            collection.isLiked = true;
-            collection.likesCount = res.likesCount;
-          },
-          error: (err: any) => {
-            console.log(err.error);
-          },
-        });
+      this.addLike(collectionId);
     } else {
-      this.collectionService
-        .removeLike(this.userAccountId, collectionId)
-        .subscribe({
-          next: (res: any) => {
-            const collection = this.collections.find(
-              (c: any) => c.id == collectionId
-            );
-            collection.isLiked = false;
-            collection.likesCount = res.likesCount;
-          },
-          error: (err: any) => {
-            console.log(err.error);
-          },
-        });
+      this.removeLike(collectionId);
     }
+  }
+
+  addLike(collectionId: string) {
+    this.collectionService.addLike(this.userAccountId, collectionId).subscribe({
+      next: (res: any) => {
+        const collection = this.collections.find(
+          (c: any) => c.id == collectionId
+        );
+        collection.isLiked = true;
+        collection.likesCount = res.likesCount;
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
+  }
+
+  removeLike(collectionId: string) {
+    this.collectionService
+      .removeLike(this.userAccountId, collectionId)
+      .subscribe({
+        next: (res: any) => {
+          const collection = this.collections.find(
+            (c: any) => c.id == collectionId
+          );
+          collection.isLiked = false;
+          collection.likesCount = res.likesCount;
+        },
+        error: (err: any) => {
+          console.log(err.error);
+        },
+      });
   }
 
   clickUpdateBtn(id: string) {
@@ -127,6 +133,7 @@ export class CollectionListComponent implements OnInit {
   setNewCollection(collection: any) {
     this.collections.push(collection);
   }
+
   updateCollection(collection: any) {
     let oldCollection = this.collections.find(
       (c: any) => c.id == this.collectionId
