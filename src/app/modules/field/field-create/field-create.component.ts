@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FieldCreateComponent {
   fieldForm!: FormGroup;
-  types: string[] = ['checkbox', 'text'];
+  types: string[] = ['checkbox', 'text', 'richtext', 'date'];
   @Output() setNewField = new EventEmitter();
   @Output() setCloseModal = new EventEmitter();
 

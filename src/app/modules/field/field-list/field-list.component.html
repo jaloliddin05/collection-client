@@ -11,5 +11,13 @@
                 <span class="filed-checkbox"></span>
             </label>
         </div>
+        <div *ngIf="field?.type == 'date'" class="d-flex align-items-center">
+            <p class="fw-bold">{{field.key}} : </p>
+            <p class="text-danger">{{field.value}}</p>
+        </div>
+        <div *ngIf="field?.type == 'richtext'" class="d-flex align-items-center">
+            <p class="fw-bold">{{field.key}} : </p>
+            <p class="text-danger">{{field.value}}</p>
+        </div>
     </li>
 </ul>

@@ -1,4 +1,4 @@
-<div class="container bg-warning p-3 rounded-4">
+<div class="container p-3 rounded-4">
     <button class="btn border-0 fs-3 " (click)="closeModal()">⤬</button>
     <form [formGroup]="fieldForm" (ngSubmit)="onSubmit()">
         <div class="form-group p-3">
@@ -9,7 +9,7 @@
         <div class="form-group p-3">
             <input type="text" class="form-control" formControlName="key" placeholder="key">
         </div>
-        <div *ngIf="fieldForm.value.type !== 'checkbox'" class="form-group p-3">
+        <div *ngIf="fieldForm.value.type == 'text'" class="form-group p-3">
             <input type="text" class="form-control" formControlName="value" placeholder="value">
         </div>
         <div *ngIf="fieldForm.value.type == 'checkbox'" class="form-group p-3">
@@ -17,6 +17,21 @@
                 <option [value]="true">true</option>
                 <option [value]="false">false</option>
             </select>
+        </div>
+        <div *ngIf="fieldForm.value.type == 'richtext'" class="form-floating p-3">
+            <mat-form-field class="w-100">
+                <mat-label>value</mat-label>
+                <textarea matInput placeholder="value" formControlName="value"></textarea>
+            </mat-form-field>
+        </div>
+        <div *ngIf="fieldForm.value.type == 'date'" class="p-3">
+            <mat-form-field class="w-100">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="value">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="fieldForm.invalid">Create</button>
