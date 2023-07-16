@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../core/services/user.service';
+import { ActivatedRoute } from '@angular/router';
 import { CollectionService } from '../../../core/services/collection.service';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -10,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./collection-list.component.scss'],
 })
 export class CollectionListComponent implements OnInit {
-  collections: any[] = [];
+  @Input() collections: any[] = [];
   currentPath: any;
   userId: any;
   collectionId: any;
@@ -20,11 +19,9 @@ export class CollectionListComponent implements OnInit {
   userAccountId: any;
 
   constructor(
-    private readonly userService: UserService,
     private readonly route: ActivatedRoute,
     private readonly collectionService: CollectionService,
-    private readonly cookieService: CookieService,
-    private readonly router: Router
+    private readonly cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
@@ -37,27 +34,8 @@ export class CollectionListComponent implements OnInit {
         this.userId = param['id'];
       });
     }
-
     if (this.userId) {
       this.isCreateCollectionVisible = true;
-      this.userService.getById(this.userId).subscribe({
-        next: (res: any) => {
-          this.collections = res.collections;
-        },
-        error: (err: any) => {
-          this.router.navigate(['login']);
-          console.log(err.error);
-        },
-      });
-    } else {
-      this.collectionService.getAll(this.userAccountId || 'id').subscribe({
-        next: (res: any) => {
-          this.collections = res.items;
-        },
-        error: (err: any) => {
-          console.log(err.error);
-        },
-      });
     }
   }
 

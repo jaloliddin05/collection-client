@@ -8,27 +8,10 @@ import { UserService } from '../../../core/services/user.service';
   templateUrl: './user-single.component.html',
   styleUrls: ['./user-single.component.scss'],
 })
-export class UserSingleComponent implements OnInit {
-  user: any;
-
+export class UserSingleComponent {
   constructor(
-    private readonly route: ActivatedRoute,
-    private readonly userService: UserService,
     private readonly location: Location
   ) {}
-  ngOnInit(): void {
-    this.route.params.subscribe((param) => {
-      const id = param['id'];
-      this.userService.getById(id).subscribe({
-        next: (res: any) => {
-          this.user = res;
-        },
-        error: (err: any) => {
-          console.log(err.error);
-        },
-      });
-    });
-  }
 
   back() {
     this.location.back();

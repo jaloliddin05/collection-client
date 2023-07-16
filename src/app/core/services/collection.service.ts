@@ -8,9 +8,10 @@ import { API_URL } from '../constants';
 export class CollectionService {
   constructor(private readonly httpClient: HttpClient) {}
 
-  getAll(id: string) {
+  getAll(id: string, page: number = 1) {
     return this.httpClient.get(`${API_URL.COLLECTION}/all/${id}`, {
       withCredentials: true,
+      params: { page },
     });
   }
 

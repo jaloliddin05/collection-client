@@ -1,0 +1,22 @@
+<div class="collection-container d-flex flex-column justify-content-between">
+    <app-collection-list [collections]="collections"></app-collection-list>
+    <div class="d-flex align-items-center justify-content-center mt-4 mb-4">
+        <div class=" d-flex flex-column align-items-center">
+            <div class="mx-5">
+                <span class="mx-1">{{(meta?.currentPage - 1) * meta?.itemsPerPage + 1}}</span>
+                <span class="mx-1">-</span>
+                <span class="mx-1">{{(meta?.currentPage - 1) * meta?.itemsPerPage + meta?.itemCount}}</span>
+                <span class="mx-1">of</span>
+                <span class="mx-1">{{meta?.totalItems}}</span>
+            </div>
+            <div class="mx-5 d-flex align-items-center">
+                <button class="btn border-0 fw-bold text-secondary" (click)="paginate(1)">《</button>
+                <button class="btn border-0 mx-3 fw-bold text-secondary" [disabled]="!links?.previous"
+                    (click)="paginate(meta?.currentPage - 1)">〈</button>
+                <button class="btn border-0 mx-3 fw-bold text-secondary" [disabled]="!links?.next"
+                    (click)="paginate(meta?.currentPage + 1)">〉</button>
+                <button class="btn border-0 fw-bold text-secondary" (click)="paginate(meta?.totalPages)">》</button>
+            </div>
+        </div>
+    </div>
+</div>
