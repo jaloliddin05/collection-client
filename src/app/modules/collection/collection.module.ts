@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 import { CollectionComponent } from './collection-single/collection.component';
 import { CollectionListComponent } from './collection-list/collection-list.component';
@@ -24,6 +25,7 @@ import { UserCollectionComponent } from './user-collection/user-collection.compo
     ReactiveFormsModule,
     RouterModule,
     ItemModule,
+    MatIconModule,
   ],
   exports: [
     CollectionComponent,

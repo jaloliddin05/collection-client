@@ -11,9 +11,15 @@ import { RouterModule } from '@angular/router';
 import { HomeFilterComponent } from './home-filter/home-filter.component';
 import { CollectionModule } from '../collection/collection.module';
 import { HomeCollectionComponent } from './home-collection/home-collection.component';
+import { HomeItemComponent } from './home-item/home-item.component';
 
 @NgModule({
-  declarations: [HomeComponent, HomeFilterComponent, HomeCollectionComponent],
+  declarations: [
+    HomeComponent,
+    HomeFilterComponent,
+    HomeCollectionComponent,
+    HomeItemComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,

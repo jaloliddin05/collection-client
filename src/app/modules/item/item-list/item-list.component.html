@@ -7,11 +7,13 @@
 </app-item-create>
 <div class="container">
     <ul class="w-100 list-unstyled row d-flex align-items-stretch">
-        <li *ngFor="let item of items" class="col-lg-3 col-md-6 col-sm-12 ">
-            <div class="card rounded-top-5 h-100 d-flex flex-column justify-content-start">
-                <img [src]="item?.avatar?.url" height="200" class="rounded-top-5 card-img">
-                <div class="card-body flex-grow-0">
+        <li *ngFor="let item of items" class="col-lg-3 col-md-6 col-sm-12 mt-3">
+            <div class="card h-100 d-flex flex-column justify-content-start">
+                <div class="card-header">
                     <h3>{{item?.name}}</h3>
+                </div>
+                <div class="card-body">
+                    <img [src]="item?.avatar?.url" height="200" class="w-100">
                 </div>
                 <div class="d-flex align-items-center">
                     <button [disabled]="!userAccountId" class="btn border-0"

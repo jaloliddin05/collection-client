@@ -28,6 +28,10 @@
                             Details
                         </button>
                         <div class="d-flex align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="">{{item?.itemsCount}}</span>
+                                <mat-icon>collections_bookmark</mat-icon>
+                            </span>
                             <button [disabled]="!userAccountId" class="btn border-0"
                                 (click)="changeLike(!item?.isLiked,item.id)">{{item?.isLiked ?'❤️':'🖤' }}</button>
                             <span [class.text-dark]="!item?.isLiked"
