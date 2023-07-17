@@ -7,6 +7,7 @@ import { CommentTimePipe } from './pipes/comment-time.pipe';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
+import { TimeDatePipe } from './pipes/date.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
     CommentTimePipe,
     SearchInputComponent,
     RegisterModalComponent,
+    TimeDatePipe,
   ],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   exports: [

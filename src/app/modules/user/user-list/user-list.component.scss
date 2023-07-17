@@ -1,4 +1,8 @@
 .user-item:hover {
-  background-color: #e1f2f9;
+  background-color: #ceeefce5 !important;
   cursor: pointer;
+}
+.user-avatar {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 166, 0, 0.892);
 }

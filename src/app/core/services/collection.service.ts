@@ -27,6 +27,21 @@ export class CollectionService {
       withCredentials: true,
     });
   }
+
+  getEightMoreLiked(id: string) {
+    return this.httpClient.get(`${API_URL.COLLECTION}/eight-more-liked/${id}`, {
+      withCredentials: true,
+    });
+  }
+  getEightBigCollection(id: string) {
+    return this.httpClient.get(
+      `${API_URL.COLLECTION}/eight-big-collection/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
   deleteOne(id: string) {
     return this.httpClient.delete(`${API_URL.COLLECTION}/${id}`, {
       withCredentials: true,

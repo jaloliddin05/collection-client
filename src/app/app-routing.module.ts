@@ -10,7 +10,7 @@ import { CollectionListComponent } from './modules/collection/collection-list/co
 import { UserListComponent } from './modules/user/user-list/user-list.component';
 import { UserSingleComponent } from './modules/user/user-single/user-single.component';
 import { AdminComponent } from './modules/admin/admin/admin.component';
-import { HomeCollectionComponent } from './modules/collection/home-collection/home-collection.component';
+import { HomeCollectionComponent } from './modules/home/home-collection/home-collection.component';
 import { UserCollectionComponent } from './modules/collection/user-collection/user-collection.component';
 
 const routes: Routes = [

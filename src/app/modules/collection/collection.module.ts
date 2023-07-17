@@ -8,7 +8,6 @@ import { CollectionCreateComponent } from './collection-create/collection-create
 import { RouterModule } from '@angular/router';
 import { ItemModule } from '../item/item.module';
 import { CollectionUpdateComponent } from './collection-update/collection-update.component';
-import { HomeCollectionComponent } from './home-collection/home-collection.component';
 import { UserCollectionComponent } from './user-collection/user-collection.component';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { UserCollectionComponent } from './user-collection/user-collection.compo
     CollectionListComponent,
     CollectionCreateComponent,
     CollectionUpdateComponent,
-    HomeCollectionComponent,
     UserCollectionComponent,
   ],
   imports: [
@@ -31,7 +29,6 @@ import { UserCollectionComponent } from './user-collection/user-collection.compo
     CollectionComponent,
     CollectionListComponent,
     CollectionCreateComponent,
-    HomeCollectionComponent,
     UserCollectionComponent,
   ],
 })

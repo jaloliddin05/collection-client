@@ -12,6 +12,7 @@ export class HomeCollectionComponent implements OnInit {
   meta: any;
   links: any;
   userId: any;
+  paginationVisible: boolean = true;
   constructor(
     private readonly collectionService: CollectionService,
     private readonly cookieService: CookieService
@@ -28,6 +29,7 @@ export class HomeCollectionComponent implements OnInit {
         console.log(err.error);
       },
     });
+    this.paginationVisible = true;
   }
 
   paginate(page: number) {
@@ -41,5 +43,10 @@ export class HomeCollectionComponent implements OnInit {
         console.log(err.error);
       },
     });
+  }
+
+  setCollection(value: { collections: any[]; bool: boolean }) {
+    this.collections = value.collections;
+    this.paginationVisible = value.bool;
   }
 }

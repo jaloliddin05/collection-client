@@ -5,15 +5,13 @@
             <p class="text-danger">{{field.value}}</p>
         </div>
         <div *ngIf="field?.type == 'checkbox'" class="d-flex align-items-center">
-            <p class="fw-bold text-warning"> {{' ' + field.key}} : </p>
             <label class="mx-1 mb-1">
-                <input type="checkbox" [checked]="field.value" class="d-none filed-checkbox-input">
-                <span class="filed-checkbox"></span>
+                <mat-checkbox class="mx-2" [checked]="field.value">{{field.key}}</mat-checkbox>
             </label>
         </div>
         <div *ngIf="field?.type == 'date'" class="d-flex align-items-center">
             <p class="fw-bold">{{field.key}} : </p>
-            <p class="text-danger">{{field.value}}</p>
+            <p class="text-danger mx-1">{{field.value | date}}</p>
         </div>
         <div *ngIf="field?.type == 'richtext'" class="d-flex align-items-center">
             <p class="fw-bold">{{field.key}} : </p>

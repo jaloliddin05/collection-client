@@ -1,4 +1,4 @@
-<button class="btn" (click)="back()">←Back</button>
+<!-- <button class="btn" (click)="back()">←Back</button>
 <div class="container">
     <div class="row mt-5">
         <div class="col truncate h5 text-danger">ID</div>
@@ -35,4 +35,70 @@
             <button class="btn btn-danger w-50 not-click">Delete</button>
         </div>
     </div>
-</div>
+</div> -->
+
+<table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.index}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="img">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Img </th>
+        <td mat-cell *matCellDef="let element">
+            <img [src]="element?.avatar?.url" width="35" height="35" alt="" class="user-avatar">
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Role </th>
+        <td mat-cell *matCellDef="let element" [class.text-success]="element.role == 2"
+            [class.text-danger]="element?.role == 1">
+            {{ element?.role == 1 ?"User":"Admin" }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action1">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="btn btn-primary w-75 not-click" [class.bg-danger]="element?.status"
+                [class.bg-success]="!element.status"
+                (click)="changeStatus(element.id,!element.status)">{{element?.status ?
+                "Block":"UnBlock"}}</button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action2">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="btn btn-primary w-75 not-click" [class.bg-danger]="element?.role == 2"
+                [class.bg-success]="element.role == 1" (click)="changeRole(element.id,element.role)">{{element?.role ==
+                1 ?
+                "do admin":"do user"}}</button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action3">
+        <th mat-header-cell *matHeaderCellDef class="fw-bold"> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="btn btn-danger not-click">
+                <mat-icon class="not-click">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-warning"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="clickUser(row.id,$event)" class="user-item">
+    </tr>
+</table>

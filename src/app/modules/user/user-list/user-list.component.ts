@@ -10,6 +10,16 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   users: any[] = [];
+  displayedColumns: string[] = [
+    'id',
+    'img',
+    'name',
+    'email',
+    'role',
+    'action1',
+    'action2',
+    'action3',
+  ];
 
   constructor(
     private readonly userService: UserService,
@@ -20,6 +30,9 @@ export class UserListComponent implements OnInit {
     this.userService.getAll().subscribe({
       next: (res: any) => {
         this.users = res.items;
+        this.users.forEach((u: any, i) => {
+          u.index = i + 1;
+        });
       },
       error: (err: any) => {
         console.log(err.error);

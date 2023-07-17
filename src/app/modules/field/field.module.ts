@@ -5,6 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { FieldCreateComponent } from './field-create/field-create.component';
 import { FieldListComponent } from './field-list/field-list.component';
@@ -24,6 +25,7 @@ import { FieldUpdateComponent } from './field-update/field-update.component';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
   ],
   exports: [FieldCreateComponent, FieldListComponent, FieldUpdateComponent],
 })

@@ -28,4 +28,8 @@ export class TagService {
       withCredentials: true,
     });
   }
+
+  getAll() {
+    return this.httpClient.get(API_URL.TAG, { withCredentials: true });
+  }
 }
