@@ -21,10 +21,8 @@
                     <span [class.text-dark]="!item?.isLiked"
                         [class.text-danger]="item?.isLiked">{{item?.likesCount}}</span>
                 </div>
-                <button class="btn text-start text-info fw-bold"
-                    [routerLink]="[currentPath,'item',item?.id]">Details</button>
+                <button class="btn text-start text-info fw-bold" [routerLink]="[currentPath,item?.id]">Details</button>
                 <div class="card-footer d-flex flex-column flex-grow-1 justify-content-between">
-                    <!-- <app-field-list [fields]="item?.fields"></app-field-list> -->
                     <ul class="d-flex align-items-center list-unstyled ">
                         <li *ngFor="let tag of item?.tags" class="text-success">
                             {{tag.title + ' '}}

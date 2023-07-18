@@ -105,4 +105,13 @@ export class SearchInputComponent {
     this.onInputBlur();
     this.search = item.name;
   }
+
+  searchClick() {
+    const item = this.results[this.filterIndex];
+    if (item) {
+      this.router.navigate(['home', 'item', item.id]);
+      this.onInputBlur();
+      this.search = item.name;
+    }
+  }
 }

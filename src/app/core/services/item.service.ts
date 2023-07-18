@@ -8,14 +8,20 @@ import { API_URL } from '../constants';
 export class ItemService {
   constructor(private readonly httpClient: HttpClient) {}
 
-  getAll() {
-    return this.httpClient.get(API_URL.ITEM, { withCredentials: true });
+  getAll(userId: string) {
+    return this.httpClient.get(`${API_URL.ITEM}/all/${userId}`, {
+      withCredentials: true,
+    });
   }
 
   getById(id: string) {
     return this.httpClient.get(`${API_URL.ITEM}/${id}`, {
       withCredentials: true,
     });
+  }
+
+  getMoreLiked(userId:string){
+    return this.httpClient.get(`${API_URL.ITEM}/more-liked/${userId}`,{withCredentials:true})
   }
 
   deleteOne(id: string) {

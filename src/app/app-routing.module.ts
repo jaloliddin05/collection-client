@@ -12,6 +12,7 @@ import { UserSingleComponent } from './modules/user/user-single/user-single.comp
 import { AdminComponent } from './modules/admin/admin/admin.component';
 import { HomeCollectionComponent } from './modules/home/home-collection/home-collection.component';
 import { UserCollectionComponent } from './modules/collection/user-collection/user-collection.component';
+import { HomeItemComponent } from './modules/home/home-item/home-item.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'collection', component: HomeCollectionComponent },
-      { path: 'collection/:id', component: CollectionComponent },
+      { path: 'collection/:id/item', component: CollectionComponent },
+      { path: 'item', component: HomeItemComponent },
       { path: 'item/:id', component: ItemComponent },
       { path: 'collection/:cId/item/:id', component: ItemComponent },
     ],
@@ -31,7 +33,7 @@ const routes: Routes = [
     component: UserProfileComponent,
     children: [
       { path: 'collection', component: UserCollectionComponent },
-      { path: 'collection/:id', component: CollectionComponent },
+      { path: 'collection/:id/item', component: CollectionComponent },
       { path: 'collection/:cId/item/:id', component: ItemComponent },
     ],
   },
@@ -41,14 +43,16 @@ const routes: Routes = [
     children: [
       { path: 'users', component: UserListComponent },
       { path: 'users/:id/collection', component: UserSingleComponent },
-      { path: 'users/:userId/collection/:id', component: CollectionComponent },
+      {
+        path: 'users/:userId/collection/:id/item',
+        component: CollectionComponent,
+      },
       {
         path: 'users/:userId/collection/:cId/item/:id',
         component: ItemComponent,
       },
     ],
   },
-  { path: 'users', component: UserListComponent },
   { path: '**', redirectTo: 'home/collection' },
 ];
 

@@ -29,6 +29,13 @@ export class TagService {
     });
   }
 
+  getItemsByTag(id: string, userId: string) {
+    return this.httpClient.get(`${API_URL.TAG}/item/${id}`, {
+      withCredentials: true,
+      params: { userId },
+    });
+  }
+
   getAll() {
     return this.httpClient.get(API_URL.TAG, { withCredentials: true });
   }

@@ -1,1 +1,24 @@
-<p>home-item works!</p>
+<div class="collection-container d-flex flex-column justify-content-between">
+    <mat-tab-group>
+        <mat-tab label="By Title">
+            <div class="d-flex flex-column justify-content-between coll-dev">
+                <app-item-list [items]="items"></app-item-list>
+            </div>
+        </mat-tab>
+        <mat-tab label="Most liked (8)❤️">
+            <app-item-list [items]="likedItems"></app-item-list>
+        </mat-tab>
+        <mat-tab label="By Tag">
+            <div class="container">
+                <mat-form-field>
+                    <mat-label>Tag</mat-label>
+                    <mat-select (valueChange)="getItemsByTag(tagSelect.value)" #tagSelect>
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let tag of tags" [value]="tag?.id">{{tag.title}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <app-item-list [items]="tagItems"></app-item-list>
+        </mat-tab>
+    </mat-tab-group>
+</div>

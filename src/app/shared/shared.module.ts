@@ -8,6 +8,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 import { TimeDatePipe } from './pipes/date.pipe';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TimeDatePipe } from './pipes/date.pipe';
     SearchInputComponent,
     RegisterModalComponent,
     TimeDatePipe,
+    PaginationComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -24,6 +26,8 @@ import { TimeDatePipe } from './pipes/date.pipe';
     FooterComponent,
     CommentTimePipe,
     SearchInputComponent,
+    RegisterModalComponent,
+    PaginationComponent,
   ],
 })
 export class SharedModule {}

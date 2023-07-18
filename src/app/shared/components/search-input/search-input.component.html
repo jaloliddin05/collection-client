@@ -2,7 +2,7 @@
     <button class="search-btn" (click)="clickDropDawn()">All <span>▼</span></button>
     <input type="text" class="w-100 rounded-pill border-0  search-input" [(ngModel)]="search" (input)="getResults()"
         (blur)="onInputBlur()" (keyup)="handleKey($event)" placeholder="search">
-    <button class="search-search">🔎</button>
+    <button class="search-search" (click)="searchClick()">🔎</button>
     <ul class="search-result list-unstyled " *ngIf="showDropdown && results.length > 0">
         <li class="p-1 search-item" *ngFor="let result of results;let i = index " [class.bg-light]="i == filterIndex"
             (click)="clickDropDown(i)">

@@ -1,23 +1,16 @@
 <div class="collection-container d-flex flex-column justify-content-between">
-    <app-home-filter (setCollection)="setCollection($event)"></app-home-filter>
-    <app-collection-list [collections]="collections"></app-collection-list>
-    <div *ngIf="paginationVisible" class="d-flex align-items-center justify-content-center mt-4 mb-4">
-        <div class=" d-flex flex-column align-items-center">
-            <div class="mx-5">
-                <span class="mx-1">{{(meta?.currentPage - 1) * meta?.itemsPerPage + 1}}</span>
-                <span class="mx-1">-</span>
-                <span class="mx-1">{{(meta?.currentPage - 1) * meta?.itemsPerPage + meta?.itemCount}}</span>
-                <span class="mx-1">of</span>
-                <span class="mx-1">{{meta?.totalItems}}</span>
+    <mat-tab-group>
+        <mat-tab label="By Title">
+            <div class="d-flex flex-column justify-content-between coll-dev">
+                <app-collection-list [collections]="collections"></app-collection-list>
+                <app-pagination [meta]="meta" [links]="links" (setPagination)="paginate($event)"></app-pagination>
             </div>
-            <div class="mx-5 d-flex align-items-center">
-                <button class="btn border-0 fw-bold text-secondary" (click)="paginate(1)">《</button>
-                <button class="btn border-0 mx-3 fw-bold text-secondary" [disabled]="!links?.previous"
-                    (click)="paginate(meta?.currentPage - 1)">〈</button>
-                <button class="btn border-0 mx-3 fw-bold text-secondary" [disabled]="!links?.next"
-                    (click)="paginate(meta?.currentPage + 1)">〉</button>
-                <button class="btn border-0 fw-bold text-secondary" (click)="paginate(meta?.totalPages)">》</button>
-            </div>
-        </div>
-    </div>
+        </mat-tab>
+        <mat-tab label="Big collections (8)">
+            <app-collection-list [collections]="bigCollections"></app-collection-list>
+        </mat-tab>
+        <mat-tab label="Most liked (8)❤️">
+            <app-collection-list [collections]="likedCollections"></app-collection-list>
+        </mat-tab>
+    </mat-tab-group>
 </div>

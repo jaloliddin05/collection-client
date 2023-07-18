@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-  items: any;
+  @Input() items: any;
   @Input() userId: any;
   @Input() collectionId: any;
   isItemCreateModalOpen: boolean = false;
@@ -28,14 +28,18 @@ export class ItemListComponent implements OnInit {
     this.userAccountId = this.cookieService.get('userId');
     this.currentPath = this.route.snapshot.url;
 
-    this.collectionService
-      .getById(this.collectionId, this.userAccountId)
-      .subscribe({
-        next: (res: any) => {
-          this.items = res.items;
-        },
-        error: (err: any) => {},
-      });
+    this.collectionId
+      ? this.collectionService
+          .getById(this.collectionId, this.userAccountId)
+          .subscribe({
+            next: (res: any) => {
+              this.items = res.items;
+            },
+            error: (err: any) => {
+              console.log(err.error);
+            },
+          })
+      : null;
   }
 
   changeLike(bool: boolean, itmId: string) {
