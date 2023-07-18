@@ -27,6 +27,10 @@ export class UserListComponent implements OnInit {
     private readonly location: Location
   ) {}
   ngOnInit(): void {
+    this.getAllUsers();
+  }
+
+  getAllUsers() {
     this.userService.getAll().subscribe({
       next: (res: any) => {
         this.users = res.items;

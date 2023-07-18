@@ -9,12 +9,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserCollectionComponent implements OnInit {
   userId: any;
-  collections:any
+  collections: any;
 
   constructor(
     private readonly userService: UserService,
     private readonly route: ActivatedRoute,
-    private readonly router:Router
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,15 +26,19 @@ export class UserCollectionComponent implements OnInit {
       });
     }
     if (this.userId) {
-      this.userService.getById(this.userId).subscribe({
-        next: (res: any) => {
-          this.collections = res.collections;
-        },
-        error: (err: any) => {
-          this.router.navigate(['login']);
-          console.log(err.error);
-        },
-      });
+      this.getUserById();
     }
+  }
+
+  getUserById() {
+    this.userService.getById(this.userId).subscribe({
+      next: (res: any) => {
+        this.collections = res.collections;
+      },
+      error: (err: any) => {
+        this.router.navigate(['login']);
+        console.log(err.error);
+      },
+    });
   }
 }

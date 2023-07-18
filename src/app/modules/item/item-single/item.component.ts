@@ -32,6 +32,21 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userAccountId = this.cookieService.get('userId');
+
+    this.getCurrentItem();
+
+    this.getCurrentUser();
+
+    this.webSocketService.receiveComment().subscribe((data) => {
+      this.comments.unshift(data);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.webSocketService.leaveRoom(this.item.id);
+  }
+
+  getCurrentItem() {
     this.param.params.subscribe((params) => {
       const id = params['id'];
       this.itemService.getById(id).subscribe({
@@ -47,7 +62,9 @@ export class ItemComponent implements OnInit, OnDestroy {
         },
       });
     });
+  }
 
+  getCurrentUser() {
     this.userService.getMe().subscribe({
       next: (res: any) => {
         this.user = res;
@@ -56,38 +73,38 @@ export class ItemComponent implements OnInit, OnDestroy {
         console.log(err.error);
       },
     });
-
-    this.webSocketService.receiveComment().subscribe((data) => {
-      this.comments.unshift(data);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.webSocketService.leaveRoom(this.item.id);
   }
 
   changeLike(bool: boolean) {
     if (bool) {
-      this.itemService.addLike(this.userAccountId, this.item?.id).subscribe({
-        next: (res: any) => {
-          this.item.isLiked = true;
-          this.item.likesCount = res.likesCount;
-        },
-        error: (err: any) => {
-          console.log(err.error);
-        },
-      });
+      this.addLike();
     } else {
-      this.itemService.removeLike(this.userAccountId, this.item?.id).subscribe({
-        next: (res: any) => {
-          this.item.isLiked = false;
-          this.item.likesCount = res.likesCount;
-        },
-        error: (err: any) => {
-          console.log(err.error);
-        },
-      });
+      this.removeLike();
     }
+  }
+
+  addLike() {
+    this.itemService.addLike(this.userAccountId, this.item?.id).subscribe({
+      next: (res: any) => {
+        this.item.isLiked = true;
+        this.item.likesCount = res.likesCount;
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
+  }
+
+  removeLike() {
+    this.itemService.removeLike(this.userAccountId, this.item?.id).subscribe({
+      next: (res: any) => {
+        this.item.isLiked = false;
+        this.item.likesCount = res.likesCount;
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
   }
 
   getComments() {

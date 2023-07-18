@@ -30,6 +30,10 @@ export class CollectionComponent implements OnInit {
       });
     }
 
+    this.getCollection();
+  }
+
+  getCollection() {
     this.route.params.subscribe((params) => {
       this.collectionId = params['id'];
       this.collectionService.getById(this.collectionId, '').subscribe({

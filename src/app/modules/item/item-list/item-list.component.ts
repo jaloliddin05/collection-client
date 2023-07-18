@@ -28,44 +28,54 @@ export class ItemListComponent implements OnInit {
     this.userAccountId = this.cookieService.get('userId');
     this.currentPath = this.route.snapshot.url;
 
-    this.collectionId
-      ? this.collectionService
-          .getById(this.collectionId, this.userAccountId)
-          .subscribe({
-            next: (res: any) => {
-              this.items = res.items;
-            },
-            error: (err: any) => {
-              console.log(err.error);
-            },
-          })
-      : null;
+    this.collectionId ? this.getItemsByCollectionId() : null;
   }
 
-  changeLike(bool: boolean, itmId: string) {
+  getItemsByCollectionId() {
+    this.collectionService
+      .getById(this.collectionId, this.userAccountId)
+      .subscribe({
+        next: (res: any) => {
+          this.items = res.items;
+        },
+        error: (err: any) => {
+          console.log(err.error);
+        },
+      });
+  }
+
+  changeLike(bool: boolean, itemId: string) {
     if (bool) {
-      this.itemService.addLike(this.userAccountId, itmId).subscribe({
-        next: (res: any) => {
-          const item = this.items.find((c: any) => c.id == itmId);
-          item.isLiked = true;
-          item.likesCount = res.likesCount;
-        },
-        error: (err: any) => {
-          console.log(err.error);
-        },
-      });
+      this.addLike(itemId);
     } else {
-      this.itemService.removeLike(this.userAccountId, itmId).subscribe({
-        next: (res: any) => {
-          const item = this.items.find((c: any) => c.id == itmId);
-          item.isLiked = false;
-          item.likesCount = res.likesCount;
-        },
-        error: (err: any) => {
-          console.log(err.error);
-        },
-      });
+      this.removeLike(itemId);
     }
+  }
+
+  addLike(itemId: string) {
+    this.itemService.addLike(this.userAccountId, itemId).subscribe({
+      next: (res: any) => {
+        const item = this.items.find((c: any) => c.id == itemId);
+        item.isLiked = true;
+        item.likesCount = res.likesCount;
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
+  }
+
+  removeLike(itemId: string) {
+    this.itemService.removeLike(this.userAccountId, itemId).subscribe({
+      next: (res: any) => {
+        const item = this.items.find((c: any) => c.id == itemId);
+        item.isLiked = false;
+        item.likesCount = res.likesCount;
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
   }
 
   openCreateItemModal() {

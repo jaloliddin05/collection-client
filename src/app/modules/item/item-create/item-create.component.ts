@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from '../../../core/services/item.service';
 import { TagService } from '../../../core/services/tag.service';
@@ -8,7 +8,7 @@ import { TagService } from '../../../core/services/tag.service';
   templateUrl: './item-create.component.html',
   styleUrls: ['./item-create.component.scss'],
 })
-export class ItemCreateComponent implements OnInit {
+export class ItemCreateComponent {
   //....
   @Input() collection: any;
   @Input() userId: any;
@@ -34,8 +34,6 @@ export class ItemCreateComponent implements OnInit {
       avatar: [null, Validators.required],
     });
   }
-
-  ngOnInit(): void {}
 
   onSubmit() {
     if (this.itemForm.valid) {

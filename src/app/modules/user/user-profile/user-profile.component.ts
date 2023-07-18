@@ -16,6 +16,10 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getMe();
+  }
+
+  getMe() {
     this.userService.getMe().subscribe({
       next: (res: any) => {
         this.user = res;
