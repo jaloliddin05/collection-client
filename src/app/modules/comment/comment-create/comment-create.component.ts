@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { CommentService } from '../../../core/services/comment.service';
+import { WebSocketService } from '../../../core/services/web-socket.service';
 
 @Component({
   selector: 'app-comment-create',
@@ -11,11 +12,11 @@ export class CommentCreateComponent implements OnInit {
   user: any;
   text: string = '';
   @Input() item: any;
-  @Output() setComment = new EventEmitter();
 
   constructor(
     private readonly userService: UserService,
-    private readonly commentService: CommentService
+    private readonly commentService: CommentService,
+    private readonly webSocketService: WebSocketService
   ) {}
 
   ngOnInit(): void {
@@ -33,8 +34,8 @@ export class CommentCreateComponent implements OnInit {
     if (this.text.trim()) {
       this.commentService.create(this.text.trim(), this.item.id).subscribe({
         next: (res: any) => {
-          this.setComment.emit(res);
           this.text = '';
+          this.webSocketService.sendComment(this.item.id, res);
         },
         error: (err: any) => {
           console.log(err.error);

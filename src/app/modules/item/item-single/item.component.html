@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="">
-        <app-comment-create *ngIf="user?.name" [item]="item" (setComment)="addNewComment($event)"></app-comment-create>
+        <app-comment-create *ngIf="user?.name" [item]="item"></app-comment-create>
         <app-comment-list [comments]="comments"></app-comment-list>
     </div>
 </div>

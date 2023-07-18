@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ItemService } from '../../../core/services/item.service';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../../../core/services/user.service';
 import { CommentService } from '../../../core/services/comment.service';
+import { WebSocketService } from '../../../core/services/web-socket.service';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent implements OnInit, OnDestroy {
   item: any;
   user: any;
   userAccountId: any;
@@ -25,7 +26,8 @@ export class ItemComponent implements OnInit {
     private readonly location: Location,
     private readonly cookieService: CookieService,
     private readonly userService: UserService,
-    private readonly commentService: CommentService
+    private readonly commentService: CommentService,
+    private readonly webSocketService: WebSocketService
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class ItemComponent implements OnInit {
           this.likedUsers = res.likedUsers.slice(0, 5);
           this.anotherLikedUsersCount = res.likedUsers.length - 5;
           this.getComments();
+          this.webSocketService.joinRoom(id);
         },
         error: (err) => {
           console.log(err.error);
@@ -53,6 +56,14 @@ export class ItemComponent implements OnInit {
         console.log(err.error);
       },
     });
+
+    this.webSocketService.receiveComment().subscribe((data) => {
+      this.comments.unshift(data);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.webSocketService.leaveRoom(this.item.id);
   }
 
   changeLike(bool: boolean) {
@@ -88,9 +99,6 @@ export class ItemComponent implements OnInit {
         console.log(err.error);
       },
     });
-  }
-  addNewComment(comment: any) {
-    this.comments.unshift(comment);
   }
 
   back() {
