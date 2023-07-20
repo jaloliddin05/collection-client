@@ -1,10 +1,10 @@
-const API_URL = 'http://localhost:4000';
+import { environment } from '../../../environment';
 
-const USER = `${API_URL}/user`;
-const AUTH = `${API_URL}/auth`;
-const COLLECTION = `${API_URL}/collection`;
-const ITEM = `${API_URL}/item`;
-const TAG = `${API_URL}/tag`;
-const COMMENT = `${API_URL}/comment`;
+const USER = `${environment.apiUrl}/user`;
+const AUTH = `${environment.apiUrl}/auth`;
+const COLLECTION = `${environment.apiUrl}/collection`;
+const ITEM = `${environment.apiUrl}/item`;
+const TAG = `${environment.apiUrl}/tag`;
+const COMMENT = `${environment.apiUrl}/comment`;
 
-export default { USER, COLLECTION, ITEM, TAG, AUTH,COMMENT };
+export default { USER, COLLECTION, ITEM, TAG, AUTH, COMMENT };

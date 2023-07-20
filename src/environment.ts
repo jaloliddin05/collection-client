@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'https://api.itransition.getter.uz/',
+  apiUrl: 'http://localhost:4000',
+  // apiUrl: 'https://api.itransition.getter.uz/',
 };
