@@ -2,7 +2,7 @@
     <li *ngFor="let field of fields" class="">
         <div *ngIf="field?.type == 'text'" class="d-flex align-items-center">
             <p class="fw-bold">{{field.key}} : </p>
-            <p class="text-danger">{{field.value}}</p>
+            <p class="text-danger mx-1">{{field.value}}</p>
         </div>
         <div *ngIf="field?.type == 'checkbox'" class="d-flex align-items-center">
             <label class="mx-1 mb-1">
@@ -13,9 +13,11 @@
             <p class="fw-bold">{{field.key}} : </p>
             <p class="text-danger mx-1">{{field.value | date}}</p>
         </div>
-        <div *ngIf="field?.type == 'richtext'" class="d-flex align-items-center">
-            <p class="fw-bold">{{field.key}} : </p>
-            <p class="text-danger">{{field.value}}</p>
+    </li>
+    <li *ngFor="let field of fields" class="">
+        <div *ngIf="field?.type == 'richtext'" class="">
+            <p class="text-dark mx-1"><span class="fw-bold">{{field.key}}</span> <br> {{field.value}}</p>
         </div>
     </li>
+
 </ul>

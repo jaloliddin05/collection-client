@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { ItemModule } from '../item/item.module';
 import { CollectionUpdateComponent } from './collection-update/collection-update.component';
 import { UserCollectionComponent } from './user-collection/user-collection.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserCollectionComponent } from './user-collection/user-collection.compo
     RouterModule,
     ItemModule,
     MatIconModule,
+    SharedModule,
   ],
   exports: [
     CollectionComponent,

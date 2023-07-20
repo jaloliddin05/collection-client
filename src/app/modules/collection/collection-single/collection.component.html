@@ -1,5 +1,5 @@
-<button (click)="back()" class="btn">←back</button>
-<div class="d-flex align-items-center">
+<app-back-button></app-back-button>
+<div class="d-flex align-items-center container">
     <h1 class="">{{collection?.title | uppercase}}</h1>
     <ul class="list-unstyled d-flex align-items-center mx-3">
         <li *ngIf="likedUsers.length > 0" class="fw-bold mx-2">liked by</li>

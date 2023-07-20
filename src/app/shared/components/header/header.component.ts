@@ -10,21 +10,28 @@ import { UserService } from '../../../core/services/user.service';
 export class HeaderComponent implements OnInit {
   userId: any;
   darkMode: any;
-  user:any
+  user: any;
 
-  constructor(private readonly cookieService: CookieService,private readonly userService:UserService) {}
+  constructor(
+    private readonly cookieService: CookieService,
+    private readonly userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.userId = this.cookieService.get('userId');
     this.darkMode = localStorage.getItem('darkMode');
+    this.getMe();
+  }
+
+  getMe() {
     this.userService.getMe().subscribe({
-      next:(res:any)=>{
-        this.user = res
+      next: (res: any) => {
+        this.user = res;
       },
-      error:(err:any)=>{
+      error: (err: any) => {
         console.log(err.error);
-      }
-    })
+      },
+    });
   }
 
   changeMode() {}

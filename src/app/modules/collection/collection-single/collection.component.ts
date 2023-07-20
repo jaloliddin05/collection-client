@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { CollectionService } from '../../../core/services/collection.service';
 
 @Component({
@@ -17,8 +16,7 @@ export class CollectionComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly collectionService: CollectionService,
-    private readonly location: Location
+    private readonly collectionService: CollectionService
   ) {}
 
   ngOnInit(): void {
@@ -47,9 +45,5 @@ export class CollectionComponent implements OnInit {
         },
       });
     });
-  }
-
-  back() {
-    this.location.back();
   }
 }

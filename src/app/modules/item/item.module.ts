@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { TagModule } from '../tag/tag.module';
 import { FieldModule } from '../field/field.module';
 import { CommentModule } from '../comment/comment.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CommentModule } from '../comment/comment.module';
     TagModule,
     FieldModule,
     CommentModule,
+    SharedModule,
   ],
   exports: [
     ItemComponent,

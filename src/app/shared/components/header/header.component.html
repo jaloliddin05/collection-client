@@ -1,19 +1,16 @@
 <nav class="header" [class.bg-dark]="darkMode">
-    <div class="d-flex align-items-center justify-content-between fs-4 p-2">
+    <div class="d-flex align-items-center fs-4 p-2">
         <div class="cursor-pointer" [routerLink]="['/home/collection']">
             <img src="../../../../assets/collection.svg" alt="" width="140" height="40" class="">
+        </div>
+        <div class="">
+            <button class="btn border-0 fw-bold text-white" [routerLink]="['/home/collection']">Collection</button>
+            <button class="btn border-0 fw-bold text-white mx-4" [routerLink]="['/home/item']">Item</button>
         </div>
         <div class="w-50">
             <app-search-input></app-search-input>
         </div>
-        <div class="">
-            <select class="form-select" aria-label="Default select example">
-                <option value="uz">Uz</option>
-                <option value="en">En</option>
-            </select>
-        </div>
-        <div class="">
-            <!-- <button *ngIf="!userId" class="btn btn-outline-danger mx-2" [routerLink]="['/login']">sign up</button> -->
+        <div class="profile-btn">
             <button class="btn" [class.bg-white]="darkMode" [routerLink]="['/profile',userId,'collection']">
                 <img *ngIf="!user?.avatar?.url" src="../../../../assets/person.svg" width="25" height="25" alt=""
                     class="">

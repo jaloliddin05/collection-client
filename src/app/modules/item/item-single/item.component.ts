@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { ItemService } from '../../../core/services/item.service';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../../../core/services/user.service';
@@ -23,7 +22,6 @@ export class ItemComponent implements OnInit, OnDestroy {
   constructor(
     private readonly param: ActivatedRoute,
     private readonly itemService: ItemService,
-    private readonly location: Location,
     private readonly cookieService: CookieService,
     private readonly userService: UserService,
     private readonly commentService: CommentService,
@@ -116,9 +114,5 @@ export class ItemComponent implements OnInit, OnDestroy {
         console.log(err.error);
       },
     });
-  }
-
-  back() {
-    this.location.back();
   }
 }

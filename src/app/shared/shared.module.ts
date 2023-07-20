@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
@@ -9,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 import { TimeDatePipe } from './pipes/date.pipe';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +22,15 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     RegisterModalComponent,
     TimeDatePipe,
     PaginationComponent,
+    BackButtonComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+  ],
   exports: [
     HeaderComponent,
     FooterComponent,
@@ -28,6 +38,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     SearchInputComponent,
     RegisterModalComponent,
     PaginationComponent,
+    BackButtonComponent,
   ],
 })
 export class SharedModule {}

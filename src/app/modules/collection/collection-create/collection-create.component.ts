@@ -9,6 +9,7 @@ import { CollectionService } from '../../../core/services/collection.service';
 })
 export class CollectionCreateComponent {
   collectionForm: FormGroup;
+  imageSource: any;
   @Input() userId: any;
   @Output() closeCreateListModal = new EventEmitter();
   @Output() setNewCollection = new EventEmitter();
@@ -29,24 +30,37 @@ export class CollectionCreateComponent {
       formData.append('title', this.collectionForm.value.title);
       formData.append('user', this.userId);
       formData.append('avatar', this.collectionForm.value.avatar);
-      this.collectionService.create(formData).subscribe({
-        next: (res: any) => {
-          this.setCollection(res);
-          this.closeModal();
-        },
-        error: (err: any) => {
-          console.log(err.error);
-        },
-      });
+      this.createCollection(formData);
     }
+  }
+
+  createCollection(data: FormData) {
+    this.collectionService.create(data).subscribe({
+      next: (res: any) => {
+        this.setCollection(res);
+        this.closeModal();
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
   }
 
   onFileChange(event: any) {
     const files = event.target.files;
+
     if (files && files.length > 0) {
       this.collectionForm.patchValue({
         avatar: files[0],
       });
+
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        console.log(e.target.result);
+
+        this.imageSource = e.target.result;
+      };
+      reader.readAsDataURL(files[0]);
     }
   }
 

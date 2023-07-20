@@ -1,10 +1,10 @@
-<button (click)="back()" class="btn">←back</button>
-<div class="container">
-    <div class="d-flex align-items-stretch">
+<app-back-button></app-back-button>
+<div class="container ">
+    <div class="d-flex align-items-stretch w-100">
         <div class="w-25">
-            <img [src]="item?.avatar?.url" alt="" class="w-100 card-img rounded rounded-2">
+            <img [src]="item?.avatar?.url" alt="" class="w-100 h-100 card-img rounded rounded-2">
         </div>
-        <div class="mx-3 h-100">
+        <div class="mx-3 h-100 w-75">
             <h2 class="mb-3">{{item?.name}}</h2>
             <app-field-list [fields]="item?.fields"></app-field-list>
         </div>

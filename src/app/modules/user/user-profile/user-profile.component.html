@@ -19,7 +19,9 @@
             <span class="mx-2 fw-bold text-secondary">{{user?.name}}</span>
         </div>
     </div>
-    <button *ngIf="user?.role == 2" [routerLink]="['/admin/users']" class="btn btn-info cursor">Admin</button>
+    <button *ngIf="user?.role == 2" mat-raised-button color="accent" [routerLink]="['/admin/users']" class="mx-2">
+        <mat-icon>admin_panel_settings</mat-icon>
+    </button>
 </div>
 <div class="">
     <router-outlet></router-outlet>

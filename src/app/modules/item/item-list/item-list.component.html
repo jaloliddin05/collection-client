@@ -1,6 +1,8 @@
-<button class="btn" [class.visible]="userId" [class.invisible]="!userId" (click)="openCreateItemModal()">Create
-    Item
-</button>
+<div class="container">
+    <button class="btn" [class.visible]="userId" [class.invisible]="!userId" (click)="openCreateItemModal()">Create
+        Item
+    </button>
+</div>
 <app-item-create class="item-create" [class.visible]="isItemCreateModalOpen" [class.invisible]="!isItemCreateModalOpen"
     [userId]="userId" [collection]="collectionId" (closeCreateListModal)="closeCreateModalList($event)"
     (setNewItem)="setNewItem($event)">

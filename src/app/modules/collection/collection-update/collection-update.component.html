@@ -1,4 +1,4 @@
-<div class="container bg-info p-3 rounded-4">
+<div class="container p-3 update-container">
     <div class="d-flex align-items-center justify-content-between w-100">
         <h2>Update Collection</h2>
         <button class="btn border-0 fs-3" (click)="closeModal()">⤬</button>
@@ -6,11 +6,16 @@
     <form [formGroup]="collectionForm" (ngSubmit)="onSubmit()">
         <div class="form-group p-3">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" formControlName="title">
+            <input type="text" class="title-input" id="title" formControlName="title">
         </div>
-        <div class="form-group p-3">
-            <label for="avatar">Avatar</label>
-            <input type="file" class="form-control-file" id="avatar" (change)="onFileChange($event)" accept="image/*">
+        <div class="form-group p-3 w-100">
+            <label class="w-100">
+                <span class="upload-span d-flex justify-content-center align-items-center">
+                    <img *ngIf="imageSource" [src]="imageSource" width="270" class=" h-100" alt="">
+                    <mat-icon *ngIf="!imageSource">add_photo_alternate</mat-icon>
+                </span>
+                <input type="file" class="d-none" (change)="onFileChange($event)">
+            </label>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="collectionForm.invalid">Update</button>
     </form>
