@@ -15,6 +15,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   item: any;
   user: any;
   userAccountId: any;
+  userId: any;
   likedUsers: any[] = [];
   anotherLikedUsersCount: number = 0;
   comments: any[] = [];
@@ -30,6 +31,8 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userAccountId = this.cookieService.get('userId');
+
+    this.getUserId()
 
     this.getCurrentItem();
 
@@ -71,6 +74,16 @@ export class ItemComponent implements OnInit, OnDestroy {
         console.log(err.error);
       },
     });
+  }
+
+  getUserId(){
+    const parentRoute = this.param.parent;
+    this.userId = parentRoute?.snapshot.paramMap.get('userId');
+    if (!this.userId) {
+      this.param.params.subscribe((p) => {
+        this.userId = p['userId'];
+      });
+    }
   }
 
   changeLike(bool: boolean) {

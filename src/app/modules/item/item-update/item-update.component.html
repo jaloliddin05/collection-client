@@ -1,1 +1,22 @@
-<p>item-update works!</p>
+<div class="container p-3 update-container">
+    <div class="d-flex align-items-center justify-content-between w-100">
+        <h2>Update Item</h2>
+        <button class="btn border-0 fs-3" (click)="closeModal()">⤬</button>
+    </div>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <div class="form-group p-3">
+            <label for="title">Name</label>
+            <input type="text" class="title-input" id="title" formControlName="title">
+        </div>
+        <div class="form-group p-3 w-100">
+            <label class="w-100">
+                <span class="upload-span d-flex justify-content-center align-items-center">
+                    <img *ngIf="imageSource" [src]="imageSource" width="270" class=" h-100" alt="">
+                    <mat-icon *ngIf="!imageSource">add_photo_alternate</mat-icon>
+                </span>
+                <input type="file" class="d-none" (change)="onFileChange($event)">
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">Update</button>
+    </form>
+</div>

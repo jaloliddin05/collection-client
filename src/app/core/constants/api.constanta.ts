@@ -6,5 +6,6 @@ const COLLECTION = `${environment.apiUrl}/collection`;
 const ITEM = `${environment.apiUrl}/item`;
 const TAG = `${environment.apiUrl}/tag`;
 const COMMENT = `${environment.apiUrl}/comment`;
+const FIELD = `${environment.apiUrl}/field`;
 
-export default { USER, COLLECTION, ITEM, TAG, AUTH, COMMENT };
+export default { USER, COLLECTION, ITEM, TAG, AUTH, COMMENT, FIELD };

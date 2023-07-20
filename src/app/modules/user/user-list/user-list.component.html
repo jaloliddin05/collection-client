@@ -1,42 +1,3 @@
-<!-- <button class="btn" (click)="back()">←Back</button>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col truncate h5 text-danger">ID</div>
-        <div class="col truncate h5">Img</div>
-        <div class="col truncate h5">Name</div>
-        <div class="col truncate h5">Email</div>
-        <div class="col truncate h5">Role</div>
-        <div class="col truncate h5">Action</div>
-        <div class="col truncate h5">Action</div>
-        <div class="col truncate h5">Action</div>
-    </div>
-    <div *ngFor="let user of users;let i = index" class="row mt-3 d-flex align-items-center user-item"
-        (click)="clickUser(user.id,$event)">
-        <div class="col truncate">{{ i + 1 }}</div>
-        <div class="col truncate d-flex align-items-center">
-            <img [src]="user?.avatar?.url" width="50" height="50" class="rounded-circle" alt="">
-        </div>
-        <div class="col truncate">{{ user.name }}</div>
-        <div class="col truncate">{{ user.email }}</div>
-        <div class="col truncate" [class.text-success]="user.role == 2" [class.text-danger]="user?.role == 1">{{
-            user?.role == 1 ?
-            "User":"Admin" }}</div>
-        <div class="col truncate">
-            <button class="btn btn-primary w-75 not-click" [class.bg-danger]="user?.status"
-                [class.bg-success]="!user.status" (click)="changeStatus(user.id,!user.status)">{{user?.status ?
-                "Block":"UnBlock"}}</button>
-        </div>
-        <div class="col truncate">
-            <button class="btn btn-primary w-75 not-click" [class.bg-danger]="user?.role == 2"
-                [class.bg-success]="user.role == 1" (click)="changeRole(user.id,user.role)">{{user?.role == 1 ?
-                "do admin":"do user"}}</button>
-        </div>
-        <div class="col truncate">
-            <button class="btn btn-danger w-50 not-click">Delete</button>
-        </div>
-    </div>
-</div> -->
-
 <table mat-table [dataSource]="users" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
@@ -92,7 +53,7 @@
     <ng-container matColumnDef="action3">
         <th mat-header-cell *matHeaderCellDef class="fw-bold"> Action </th>
         <td mat-cell *matCellDef="let element">
-            <button class="btn btn-danger not-click">
+            <button class="btn btn-danger not-click" (click)="deleteUser(element.id)">
                 <mat-icon class="not-click">delete</mat-icon>
             </button>
         </td>

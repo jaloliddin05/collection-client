@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class CollectionListComponent implements OnInit {
   @Input() collections: any[] = [];
   currentPath: any;
-  userId: any;
+  @Input() userId: any;
   collectionId: any;
   isCreateCollectionOpen: boolean = false;
   isCreateCollectionVisible: boolean = false;
@@ -27,13 +27,7 @@ export class CollectionListComponent implements OnInit {
   ngOnInit(): void {
     this.userAccountId = this.cookieService.get('userId');
     this.currentPath = this.route.snapshot.url;
-    const parentRoute = this.route.parent;
-    this.userId = parentRoute?.snapshot.paramMap.get('userId');
-    if (!this.userId) {
-      this.route.params.subscribe((param) => {
-        this.userId = param['id'];
-      });
-    }
+
     if (this.userId) {
       this.isCreateCollectionVisible = true;
     }

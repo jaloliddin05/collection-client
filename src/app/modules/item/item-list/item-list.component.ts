@@ -10,10 +10,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-  @Input() items: any;
+  @Input() items: any[] = [];
   @Input() userId: any;
   @Input() collectionId: any;
+  itemId:any
   isItemCreateModalOpen: boolean = false;
+  isItemUpdateModalOpen: boolean = false;
   userAccountId: any;
   currentPath: any;
 
@@ -78,11 +80,33 @@ export class ItemListComponent implements OnInit {
     });
   }
 
+  deleteItem(id: string) {
+    this.itemService.deleteOne(id).subscribe({
+      next: (res: any) => {
+        const index = this.items.findIndex((i: any) => i.id == id);
+        this.items.splice(index, 1);
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      },
+    });
+  }
+
+  clickUpdateBtn(id: string) {
+    this.itemId = id;
+    this.isItemUpdateModalOpen = !this.isItemUpdateModalOpen;
+  }
+
   openCreateItemModal() {
     this.isItemCreateModalOpen = !this.isItemCreateModalOpen;
   }
+
   closeCreateModalList(bool: boolean) {
     this.isItemCreateModalOpen = bool;
+  }
+
+  changeVisibleUpdateModal(bool:boolean){
+   this.isItemUpdateModalOpen = bool
   }
 
   setNewItem(item: any) {

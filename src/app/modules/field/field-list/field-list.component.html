@@ -3,21 +3,36 @@
         <div *ngIf="field?.type == 'text'" class="d-flex align-items-center">
             <p class="fw-bold">{{field.key}} : </p>
             <p class="text-danger mx-1">{{field.value}}</p>
+            <button *ngIf="canUpdate" class="btn" (click)="openUpdate(field)">
+                <mat-icon>mode_edit</mat-icon>
+            </button>
         </div>
         <div *ngIf="field?.type == 'checkbox'" class="d-flex align-items-center">
             <label class="mx-1 mb-1">
                 <mat-checkbox class="mx-2" [checked]="field.value">{{field.key}}</mat-checkbox>
             </label>
+            <button *ngIf="canUpdate" class="btn" (click)="openUpdate(field)">
+                <mat-icon>mode_edit</mat-icon>
+            </button>
         </div>
         <div *ngIf="field?.type == 'date'" class="d-flex align-items-center">
             <p class="fw-bold">{{field.key}} : </p>
             <p class="text-danger mx-1">{{field.value | date}}</p>
+            <button *ngIf="canUpdate" class="btn" (click)="openUpdate(field)">
+                <mat-icon>mode_edit</mat-icon>
+            </button>
         </div>
     </li>
     <li *ngFor="let field of fields" class="">
         <div *ngIf="field?.type == 'richtext'" class="">
             <p class="text-dark mx-1"><span class="fw-bold">{{field.key}}</span> <br> {{field.value}}</p>
+            <button *ngIf="canUpdate" class="btn" (click)="openUpdate(field)">
+                <mat-icon>mode_edit</mat-icon>
+            </button>
         </div>
     </li>
-
 </ul>
+
+<app-field-update class="field-update" [field]="updatedField" [class.visible]="isUpdateFieldVisible"
+    [class.invisible]="!isUpdateFieldVisible" (setCloseModal)="closeModal($event)"
+    (setNewField)="setNewField($event)"></app-field-update>

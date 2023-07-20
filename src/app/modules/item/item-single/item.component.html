@@ -6,7 +6,7 @@
         </div>
         <div class="mx-3 h-100 w-75">
             <h2 class="mb-3">{{item?.name}}</h2>
-            <app-field-list [fields]="item?.fields"></app-field-list>
+            <app-field-list [fields]="item?.fields" [canUpdate]="userId"></app-field-list>
         </div>
     </div>
     <div class="mt-4">

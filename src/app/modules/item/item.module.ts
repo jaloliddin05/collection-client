@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ItemComponent } from './item-single/item.component';
 import { ItemListComponent } from './item-list/item-list.component';
@@ -28,6 +29,7 @@ import { SharedModule } from '../../shared/shared.module';
     FieldModule,
     CommentModule,
     SharedModule,
+    MatIconModule,
   ],
   exports: [
     ItemComponent,

@@ -7,6 +7,9 @@
     [userId]="userId" [collection]="collectionId" (closeCreateListModal)="closeCreateModalList($event)"
     (setNewItem)="setNewItem($event)">
 </app-item-create>
+<app-item-update class="item-create" [class.visible]="isItemUpdateModalOpen" [class.invisible]="!isItemUpdateModalOpen"
+    [itemId]="itemId" (closeUpdateListModal)="changeVisibleUpdateModal($event)"></app-item-update>
+
 <div class="container">
     <ul class="w-100 list-unstyled row d-flex align-items-stretch">
         <li *ngFor="let item of items" class="col-lg-3 col-md-6 col-sm-12 mt-3">
@@ -24,6 +27,10 @@
                         [class.text-danger]="item?.isLiked">{{item?.likesCount}}</span>
                 </div>
                 <button class="btn text-start text-info fw-bold" [routerLink]="[currentPath,item?.id]">Details</button>
+                <div *ngIf="userId" class="d-flex align-items-center justify-content-between">
+                    <button class="btn btn-warning w-50 mx-1" (click)="clickUpdateBtn(item.id)">Update</button>
+                    <button class="btn btn-danger w-50 mx-1" (click)="deleteItem(item.id)">Delete</button>
+                </div>
                 <div class="card-footer d-flex flex-column flex-grow-1 justify-content-between">
                     <ul class="d-flex align-items-center list-unstyled ">
                         <li *ngFor="let tag of item?.tags" class="text-success">
