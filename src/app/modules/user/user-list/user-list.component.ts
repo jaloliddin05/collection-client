@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { UserService } from '../../../core/services/user.service';
 import { Router } from '@angular/router';
 
@@ -23,8 +22,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private readonly userService: UserService,
-    private readonly router: Router,
-    private readonly location: Location
+    private readonly router: Router
   ) {}
   ngOnInit(): void {
     this.getAllUsers();
@@ -86,9 +84,5 @@ export class UserListComponent implements OnInit {
       return;
     }
     this.router.navigate(['admin', 'users', id, 'collection']);
-  }
-
-  back() {
-    this.location.back();
   }
 }

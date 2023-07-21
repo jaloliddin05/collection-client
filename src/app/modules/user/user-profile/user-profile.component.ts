@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,10 +10,7 @@ export class UserProfileComponent implements OnInit {
   user: any;
   isUpdateModalOpen: boolean = false;
 
-  constructor(
-    private readonly userService: UserService,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   ngOnInit(): void {
     this.getMe();
@@ -26,7 +22,7 @@ export class UserProfileComponent implements OnInit {
         this.user = res;
       },
       error: (err) => {
-        this.router.navigate(['login']);
+        console.log(err.error);
       },
     });
   }

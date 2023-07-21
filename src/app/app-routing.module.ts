@@ -6,7 +6,6 @@ import { HomeComponent } from './modules/home/home.component';
 import { CollectionComponent } from './modules/collection/collection-single/collection.component';
 import { ItemComponent } from './modules/item/item-single/item.component';
 import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
-import { CollectionListComponent } from './modules/collection/collection-list/collection-list.component';
 import { UserListComponent } from './modules/user/user-list/user-list.component';
 import { UserSingleComponent } from './modules/user/user-single/user-single.component';
 import { AdminComponent } from './modules/admin/admin/admin.component';
