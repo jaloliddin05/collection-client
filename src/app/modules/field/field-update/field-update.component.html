@@ -2,9 +2,6 @@
     <button class="btn border-0 fs-3 " (click)="closeModal()">⤬</button>
     <form [formGroup]="fieldForm" (ngSubmit)="onSubmit()">
         <div class="form-group p-3">
-            <!-- <select class="form-control" formControlName="type">
-                <option *ngFor="let type of types" [value]="type">{{type}}</option>
-            </select> -->
             <mat-form-field>
                 <mat-label>Select type</mat-label>
                 <mat-select disableRipple formControlName="type">

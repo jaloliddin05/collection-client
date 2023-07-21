@@ -25,7 +25,8 @@
     </li>
     <li *ngFor="let field of fields" class="">
         <div *ngIf="field?.type == 'richtext'" class="">
-            <p class="text-dark mx-1"><span class="fw-bold">{{field.key}}</span> <br> {{field.value}}</p>
+            <span class="fw-bold">{{field.key}}</span>
+            <p class="text-dark mx-1 filed-rich-p"> {{field.value}}</p>
             <button *ngIf="canUpdate" class="btn" (click)="openUpdate(field)">
                 <mat-icon>mode_edit</mat-icon>
             </button>

@@ -15,7 +15,7 @@ export class ItemUpdateComponent implements OnInit {
   userId: any;
   @Input() itemId: any;
   @Output() closeUpdateListModal = new EventEmitter();
-  @Output() setNewCollection = new EventEmitter();
+  @Output() setNewItem = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,14 +41,14 @@ export class ItemUpdateComponent implements OnInit {
   onSubmit() {
     if (this.itemForm.valid) {
       const formData = new FormData();
-      this.itemForm.value.title
-        ? formData.append('title', this.itemForm.value.title)
+      this.itemForm.value.name
+        ? formData.append('name', this.itemForm.value.name)
         : null;
       this.itemForm.value.avatar
         ? formData.append('avatar', this.itemForm.value.avatar)
         : null;
 
-      if (this.itemForm.value.avatar || this.itemForm.value.title) {
+      if (this.itemForm.value.avatar || this.itemForm.value.name) {
         this.updateItem(formData);
       }
     }
@@ -90,7 +90,7 @@ export class ItemUpdateComponent implements OnInit {
     this.closeUpdateListModal.emit(false);
   }
 
-  setItem(collection: any) {
-    this.setNewCollection.emit(collection);
+  setItem(item: any) {
+    this.setNewItem.emit(item);
   }
 }

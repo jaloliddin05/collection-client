@@ -13,7 +13,7 @@ export class ItemListComponent implements OnInit {
   @Input() items: any[] = [];
   @Input() userId: any;
   @Input() collectionId: any;
-  itemId:any
+  itemId: any;
   isItemCreateModalOpen: boolean = false;
   isItemUpdateModalOpen: boolean = false;
   userAccountId: any;
@@ -105,11 +105,16 @@ export class ItemListComponent implements OnInit {
     this.isItemCreateModalOpen = bool;
   }
 
-  changeVisibleUpdateModal(bool:boolean){
-   this.isItemUpdateModalOpen = bool
+  changeVisibleUpdateModal(bool: boolean) {
+    this.isItemUpdateModalOpen = bool;
   }
 
   setNewItem(item: any) {
     this.items.push(item);
+  }
+
+  updateItem(item: any) {
+    const index = this.items.findIndex((i: any) => i.id == item.id);
+    this.items[index] = item;
   }
 }

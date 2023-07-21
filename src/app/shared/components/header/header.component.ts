@@ -12,12 +12,12 @@ export class HeaderComponent implements OnInit {
   userId: any;
   darkMode: any;
   user: any;
-  isAuthModalOpen:boolean = false
+  isAuthModalOpen: boolean = false;
 
   constructor(
     private readonly cookieService: CookieService,
     private readonly userService: UserService,
-    private readonly router:Router
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,10 +38,10 @@ export class HeaderComponent implements OnInit {
   }
 
   goProfile() {
-    if(this.userId){
-      this.router.navigate(['profile',this.userId,'collection'])
-    }else{
-      this.isAuthModalOpen = true
+    if (this.user?.id) {
+      this.router.navigate(['profile', this.userId, 'collection']);
+    } else {
+      this.isAuthModalOpen = true;
     }
   }
 }

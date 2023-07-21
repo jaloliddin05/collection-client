@@ -8,7 +8,8 @@
     (setNewItem)="setNewItem($event)">
 </app-item-create>
 <app-item-update class="item-create" [class.visible]="isItemUpdateModalOpen" [class.invisible]="!isItemUpdateModalOpen"
-    [itemId]="itemId" (closeUpdateListModal)="changeVisibleUpdateModal($event)"></app-item-update>
+    [itemId]="itemId" (closeUpdateListModal)="changeVisibleUpdateModal($event)"
+    (setNewItem)="updateItem($event)"></app-item-update>
 
 <div class="container">
     <ul class="w-100 list-unstyled row d-flex align-items-stretch">

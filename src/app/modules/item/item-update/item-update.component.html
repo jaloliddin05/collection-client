@@ -6,7 +6,7 @@
     <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
         <div class="form-group p-3">
             <label for="title">Name</label>
-            <input type="text" class="title-input" id="title" formControlName="title">
+            <input type="text" class="title-input" id="title" formControlName="name">
         </div>
         <div class="form-group p-3 w-100">
             <label class="w-100">
@@ -17,6 +17,6 @@
                 <input type="file" class="d-none" (change)="onFileChange($event)">
             </label>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
