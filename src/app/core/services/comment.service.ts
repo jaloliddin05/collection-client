@@ -29,4 +29,10 @@ export class CommentService {
       withCredentials: true,
     });
   }
+
+  updateField(id: string, data: any) {
+    return this.httpClient.patch(`${API_URL.FIELD}/${id}`, data, {
+      withCredentials: true,
+    });
+  }
 }

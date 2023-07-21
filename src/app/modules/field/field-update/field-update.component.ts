@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { FieldService } from '../../../core/services/field.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommentService } from '../../../core/services/comment.service';
 
 @Component({
   selector: 'app-field-update',
@@ -15,7 +15,7 @@ export class FieldUpdateComponent implements OnInit {
   @Output() setCloseModal = new EventEmitter();
 
   constructor(
-    private readonly filedService: FieldService,
+    private readonly filedService: CommentService,
     private readonly formBuilder: FormBuilder
   ) {}
 

@@ -19,6 +19,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   likedUsers: any[] = [];
   anotherLikedUsersCount: number = 0;
   comments: any[] = [];
+  text=''
 
   constructor(
     private readonly param: ActivatedRoute,
@@ -127,5 +128,19 @@ export class ItemComponent implements OnInit, OnDestroy {
         console.log(err.error);
       },
     });
+  }
+
+  addComment() {
+    if (this.text.trim()) {
+      this.commentService.create(this.text.trim(), this.item.id).subscribe({
+        next: (res: any) => {
+          this.text = '';
+          this.webSocketService.sendComment(this.item.id, res);
+        },
+        error: (err: any) => {
+          console.log(err.error);
+        },
+      });
+    }
   }
 }
