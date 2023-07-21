@@ -31,6 +31,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [UserListComponent, UserSingleComponent, UserProfileComponent],
+  exports: [
+    UserListComponent,
+    UserSingleComponent,
+    UserProfileComponent,
+    UserUpdateComponent,
+  ],
 })
 export class UserModule {}
