@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
   user: any;
+  isUpdateModalOpen: boolean = false;
 
   constructor(
     private readonly userService: UserService,
@@ -43,5 +44,13 @@ export class UserProfileComponent implements OnInit {
         console.log(err.error);
       },
     });
+  }
+
+  changeUpdateVisible(bool: boolean) {
+    this.isUpdateModalOpen = bool;
+  }
+
+  updateUser(user: any) {
+    this.user = user;
   }
 }

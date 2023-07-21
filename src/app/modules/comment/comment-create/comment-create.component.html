@@ -1,6 +1,8 @@
 <div class="position-relative">
     <span class="user-comment-avatar">
-        <img [src]="user?.avatar?.url" alt="" class="rounded-circle" width="40" height="40">
+        <img *ngIf="user?.avatar?.url" [src]="user?.avatar?.url" alt="" class="rounded-circle" width="40" height="40">
+        <img *ngIf="!user?.avatar?.url" src="../../../../assets/person.svg" alt="" class="rounded-circle" width="40"
+            height="40">
     </span>
     <input type="text" class="form-control comment-input p-3 text-secondary" [(ngModel)]="text"
         placeholder="Add a comment">

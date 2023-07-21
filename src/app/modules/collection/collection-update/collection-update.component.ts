@@ -37,6 +37,7 @@ export class CollectionUpdateComponent {
 
       if (this.collectionForm.value.avatar || this.collectionForm.value.title) {
         this.updateCollection(formData);
+        this.collectionForm.reset();
       }
     }
   }

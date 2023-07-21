@@ -1,22 +1,12 @@
 <app-header></app-header>
 <div class="w-100 d-flex align-items-center justify-content-between">
     <div class="">
-        <div *ngIf="user?.avatar?.url" class="">
+        <div class="">
             <img [src]="user?.avatar?.url" width="60" height="60" alt="" class="user-avatar-img">
             <span class="mx-2 fw-bold text-secondary">{{user?.name}}</span>
             <div>
-                <label class="mx-1 cursor">
-                    update
-                    <input type="file" class="d-none" (change)="onFileChange($event)">
-                </label>
+                <button class="btn" (click)="changeUpdateVisible(!isUpdateModalOpen)">Update</button>
             </div>
-        </div>
-        <div *ngIf="!user?.avatar?.url" class="">
-            <label>
-                <span class="btn avatar-upload-btn"></span>
-                <input type="file" class="d-none" (change)="onFileChange($event)">
-            </label>
-            <span class="mx-2 fw-bold text-secondary">{{user?.name}}</span>
         </div>
     </div>
     <button *ngIf="user?.role == 2" mat-raised-button color="accent" [routerLink]="['/admin/users']" class="mx-2">
@@ -26,3 +16,6 @@
 <div class="">
     <router-outlet></router-outlet>
 </div>
+<app-user-update class="update-modal" [userId]="user?.id" [class.visible]="isUpdateModalOpen"
+    [class.invisible]="!isUpdateModalOpen" (closeUpdateListModal)="changeUpdateVisible($event)"
+    (setNewUser)="updateUser($event)"></app-user-update>

@@ -10,9 +10,16 @@ import { UserSingleComponent } from './user-single/user-single.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CollectionModule } from '../collection/collection.module';
 import { SharedModule } from '../../shared/shared.module';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [UserListComponent, UserSingleComponent, UserProfileComponent],
+  declarations: [
+    UserListComponent,
+    UserSingleComponent,
+    UserProfileComponent,
+    UserUpdateComponent,
+  ],
   imports: [
     CommonModule,
     CollectionModule,
@@ -21,6 +28,8 @@ import { SharedModule } from '../../shared/shared.module';
     MatTableModule,
     MatIconModule,
     MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [UserListComponent, UserSingleComponent, UserProfileComponent],
 })

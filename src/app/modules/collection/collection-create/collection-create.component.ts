@@ -39,6 +39,7 @@ export class CollectionCreateComponent {
       next: (res: any) => {
         this.setCollection(res);
         this.closeModal();
+        this.collectionForm.reset();
       },
       error: (err: any) => {
         console.log(err.error);
