@@ -11,12 +11,15 @@
             <app-search-input></app-search-input>
         </div>
         <div class="profile-btn">
-            <button class="btn" [class.bg-white]="darkMode" [routerLink]="['/profile',userId,'collection']">
+            <button class="btn" [class.bg-white]="darkMode" (click)="goProfile()">
                 <img *ngIf="!user?.avatar?.url" src="../../../../assets/person.svg" width="25" height="25" alt=""
                     class="">
                 <img *ngIf="user?.avatar?.url" [src]="user?.avatar?.url" width="25" height="25" alt=""
                     class="user-avatar">
             </button>
+            <app-register-modal *ngIf="isAuthModalOpen" class="register-modal"></app-register-modal>
         </div>
     </div>
 </nav>
+<div *ngIf="isAuthModalOpen" class="layout-sh position-absolute start-0 top-0 bg-transparent"
+    (click)="isAuthModalOpen = !isAuthModalOpen"></div>

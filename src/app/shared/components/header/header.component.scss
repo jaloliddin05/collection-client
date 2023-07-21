@@ -11,4 +11,18 @@
 }
 .profile-btn {
   margin-left: auto;
+  position: relative;
+}
+
+.register-modal {
+  position: absolute;
+  top: 40px;
+  left: -80px;
+  z-index: 5;
+}
+
+.layout-sh{
+  z-index: 4;
+  height: 100vh;
+  width: 100vw;
 }

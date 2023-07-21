@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../../../core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,12 @@ export class HeaderComponent implements OnInit {
   userId: any;
   darkMode: any;
   user: any;
+  isAuthModalOpen:boolean = false
 
   constructor(
     private readonly cookieService: CookieService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly router:Router
   ) {}
 
   ngOnInit(): void {
@@ -34,5 +37,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  changeMode() {}
+  goProfile() {
+    if(this.userId){
+      this.router.navigate(['profile',this.userId,'collection'])
+    }else{
+      this.isAuthModalOpen = true
+    }
+  }
 }

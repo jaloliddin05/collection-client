@@ -1,5 +1,9 @@
-<div class="">
-    <button class="btn">Login</button>
-    <div class="btn">Login</div>
-    <button class="btn">Login</button>
+<div class="d-flex flex-column justify-content-between align-items-center modal-div p-2">
+    <button mat-raised-button color="accent" [routerLink]="['/login']">Login</button>
+    <div class="d-flex align-items-center justify-content-center">
+        <span class="span-line span-left w-25"></span>
+        <p class="">or</p>
+        <span class="span-line span-right w-25"></span>
+    </div>
+    <button mat-raised-button color="accent" [routerLink]="['/register']">Sign up</button>
 </div>
